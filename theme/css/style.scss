@@ -8,8 +8,13 @@ $dark-grey:     #333;
 $blue:          #0e94ec;
 $background:    $dark-grey;
 $page:          #eee8d5;
-
 $accent:        $purple;
+
+$maxwidth:      750px;
+$minwidth:      350px;
+$contentminwidth: 600px;
+$padding:        35px;
+
 
 $body-fonts: "DejaVu Sans","Bitstream Vera Sans",FreeSans,Helvetica,Arial,sans-serif;
 $header-fonts: $body-fonts;
@@ -53,14 +58,16 @@ html {
 }
 
 body {
-    margin: 0 19%;
+    margin: 0 auto;
     padding: 0;
     background-color: $page;
     color: $dark-grey;
     @include body-font;
     -webkit-font-smoothing: subpixel-antialiased;
-    min-height: 100%;
     height: auto;
+    min-height: 100%;
+    max-width: $maxwidth;
+    min-width: $minwidth !important;
 }
 
 a {
@@ -111,7 +118,7 @@ a {
 .header {
     z-index: 0;
     margin: 0;
-    padding: 1em 10% 2em;
+    padding: 1em 5% 2em;
 
     figure {
         margin: 0 auto;
@@ -159,10 +166,7 @@ a {
         margin: 0;
         padding: 5px 0 6px;
 
-        // clear: both;
         display: block;
-        // float: none;
-
         a {
             font-size: 14px;
             @include border-radius(35px);
@@ -189,9 +193,9 @@ a {
 body > #content {
     top: 0;
     margin: 0 auto;
+    padding: 0 $padding;
     height: 100%;
     z-index: 1;
-    max-width: 600px;
 }
 a.button_accent {
     margin: 1em;
@@ -219,6 +223,9 @@ a.button_accent {
     }
 }
 article {
+    margin: 0 auto;
+    max-width: min($contentminwidth, $maxwidth - ($padding * 2));
+    min-width: $minwidth - ($padding * 2);
 
     h1 {
         margin: 24px 0 16px;
@@ -311,22 +318,25 @@ article {
     }
 
     hr {
-        color: $light-grey;
-        background-color: $light-grey;
+        color: $background;
+        background-color: $background;
         height: 1px;
         width: 100%;
         border: none;
     }
 
     header {
-        margin-bottom: 4em;
-        padding: 2em;
+        margin-bottom: $padding;
+        padding: $padding $padding*2;
         font-color: $black;
         font-weight: 300;
         // text-transform: uppercase;
         text-size: 15px;
         border-bottom: $background 1px solid;
         line-height: 33px;
+        .item-list {
+            margin: 0 auto;
+        }
 
         h1 {
             color: $black;
@@ -404,13 +414,17 @@ article {
     font-size: 0.9em;
     label {
         width: 19%;
-        // min-width: 8em;
+        min-width: 6em;
         float: left;
         display: block;
     }
     .item-file {
         @include mono-font;
     }
+}
+
+.gist, img, embed {
+    max-width: 700px;
 }
 
 dl.entry-list {
