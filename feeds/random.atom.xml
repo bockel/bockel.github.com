@@ -46,46 +46,75 @@ each&amp;nbsp;track&lt;/li&gt;
 &lt;/span&gt;
 &lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$# &lt;/span&gt;-ne 1 &lt;span class="o"&gt;]&lt;/span&gt;
 &lt;span class="k"&gt;then &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Usage: $0 audacity.aup&amp;quot;&lt;/span&gt;
-    &lt;span class="nb"&gt;exit &lt;/span&gt;1
+   &lt;span class="nb"&gt;exit &lt;/span&gt;1
 &lt;span class="k"&gt;fi
 
 if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; ! -r &lt;span class="s2"&gt;&amp;quot;$1&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;
 &lt;span class="k"&gt;then &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Error: cannot find audacity file: $1&amp;quot;&lt;/span&gt;
-    &lt;span class="nb"&gt;exit &lt;/span&gt;1
+   &lt;span class="nb"&gt;exit &lt;/span&gt;1
 &lt;span class="k"&gt;fi&lt;/span&gt;
 
 &lt;span class="c"&gt;# Get track lengths
 &lt;/span&gt;cat &lt;span class="s"&gt;&amp;lt;&amp;lt;- &lt;span class="caps"&gt;EOF&lt;/span&gt; | xsltproc --novalid --nonet - &amp;quot;$1&amp;quot;
 &amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;&lt;span class="caps"&gt;UTF&lt;/span&gt;-8&amp;quot;?&amp;gt;
 &amp;lt;xsl:stylesheet version=&amp;quot;1.0&amp;quot;
-    xmlns:xsl=&amp;quot;http://www.w3.org/1999/&lt;span class="caps"&gt;XSL&lt;/span&gt;/Transform&amp;quot;
-    xmlns:a=&amp;quot;http://audacity.sourceforge.net/xml/&amp;quot;&amp;gt;
-    &amp;lt;xsl:output method=&amp;quot;text&amp;quot;/&amp;gt;
-    &amp;lt;xsl:variable name=&amp;quot;rate&amp;quot; select=&amp;quot;/a:project/&amp;#64;rate&amp;quot;/&amp;gt;
-    &amp;lt;xsl:template match=&amp;quot;/a:project&amp;quot;&amp;gt;
-        &amp;lt;xsl:for-each select=&amp;quot;a:wavetrack&amp;quot;&amp;gt;
-            &amp;lt;xsl:value-of select=&amp;quot;concat('Slide ',position(),': ',round(sum(a:waveclip/a:sequence/&amp;#64;numsamples) div \$rate),'s')&amp;quot;/&amp;gt;
-            &amp;lt;xsl:text&amp;gt;
+   xmlns:xsl=&amp;quot;http://www.w3.org/1999/&lt;span class="caps"&gt;XSL&lt;/span&gt;/Transform&amp;quot;
+   xmlns:a=&amp;quot;http://audacity.sourceforge.net/xml/&amp;quot;&amp;gt;
+   &amp;lt;xsl:output method=&amp;quot;text&amp;quot;/&amp;gt;
+   &amp;lt;xsl:variable name=&amp;quot;rate&amp;quot; select=&amp;quot;/a:project/&amp;#64;rate&amp;quot;/&amp;gt;
+   &amp;lt;xsl:template match=&amp;quot;/a:project&amp;quot;&amp;gt;
+       &amp;lt;xsl:for-each select=&amp;quot;a:wavetrack&amp;quot;&amp;gt;
+           &amp;lt;xsl:value-of select=&amp;quot;concat('Slide ',position(),': ',round(sum(a:waveclip/a:sequence/&amp;#64;numsamples) div \$rate),'s')&amp;quot;/&amp;gt;
+           &amp;lt;xsl:text&amp;gt;
 &amp;lt;/xsl:text&amp;gt;
-        &amp;lt;/xsl:for-each&amp;gt;
-    &amp;lt;/xsl:template&amp;gt;
-    &amp;lt;xsl:template match=&amp;quot;text()&amp;quot;/&amp;gt;
+       &amp;lt;/xsl:for-each&amp;gt;
+   &amp;lt;/xsl:template&amp;gt;
+   &amp;lt;xsl:template match=&amp;quot;text()&amp;quot;/&amp;gt;
 &amp;lt;/xsl:stylesheet&amp;gt;
 &lt;span class="caps"&gt;EOF&lt;/span&gt;&lt;/span&gt;
 &lt;/pre&gt;
-&lt;ol class="arabic simple" start="4"&gt;
-&lt;li&gt;Open the .odp presentation&amp;nbsp;file&lt;/li&gt;
-&lt;li&gt;Select the first slide. Then go to the top menu and select &lt;em&gt;Slideshow &amp;gt;
+&lt;ol class="arabic" start="4"&gt;
+&lt;li&gt;&lt;p class="first"&gt;Open the .odp presentation&amp;nbsp;file&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Select the first slide. Then go to the top menu and select &lt;em&gt;Slideshow &amp;gt;
 Slide Transition&amp;#8230;&lt;/em&gt;. Under the &lt;em&gt;Modify Transition&lt;/em&gt; section, select the
 value for the Speed (recommend &lt;strong&gt;Medium&lt;/strong&gt;), then choose the Sound drop down.
-In the file chooser panel, select the .wav file you exported from Step&amp;nbsp;2.&lt;/li&gt;
-&lt;li&gt;Go to menu and select &lt;em&gt;Slideshow &amp;gt; Slide Transition&amp;#8230;&lt;/em&gt;. Fill out the
+In the file chooser panel, select the .wav file you exported from Step&amp;nbsp;2.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Go to menu and select &lt;em&gt;Slideshow &amp;gt; Slide Transition&amp;#8230;&lt;/em&gt;. Fill out the
 &lt;em&gt;Advance Slide &amp;gt; Automatically After&lt;/em&gt; value with the slide timings (Step 3)
-for each&amp;nbsp;slide&lt;/li&gt;
-&lt;li&gt;Use &lt;tt class="docutils literal"&gt;audacity&lt;/tt&gt; and the audio file to play and sync the custom animations
-on each slide with the narrative. &lt;strong&gt;&lt;span class="caps"&gt;BEWARE&lt;/span&gt;&lt;/strong&gt;: The slide transition timings
-set in the previous step do not start until the last animation finishes! If
-you have animations, you will have to adjust the times&amp;nbsp;accordingly!&lt;/li&gt;
+for each&amp;nbsp;slide&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Use &lt;tt class="docutils literal"&gt;audacity&lt;/tt&gt; and the audio file to play and sync the custom animations
+on each slide with the&amp;nbsp;narrative.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;&lt;span class="caps"&gt;BEWARE&lt;/span&gt;&lt;/strong&gt;: The slide transition timings set in the previous step do not
+start until the last animation finishes! If you have animations, you will
+have to adjust the times&amp;nbsp;accordingly!&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Capture the timed slide show using a screen capture&amp;nbsp;software&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;It is recommended that you scale your screen size down to 800x600 before&amp;nbsp;recording&lt;/li&gt;
+&lt;li&gt;If you are using Gnome3, just start the presentation and immediately press
+&lt;tt class="docutils literal"&gt;ctrl + alt + shift + r&lt;/tt&gt;, wait for the slide show to finish, and press
+the key combo once more to stop recording. This produces a
+&lt;em&gt;Screencast-&amp;#8230;.webm&lt;/em&gt; file in your &lt;tt class="docutils literal"&gt;$&lt;span class="caps"&gt;HOME&lt;/span&gt;&lt;/tt&gt; directory. (Note: this will
+not capture the&amp;nbsp;audio)&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Encode the .wav audio into a .ogg format (downmix into 1 mono channel,
+resample to&amp;nbsp;8000Hz):&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+oggenc --downmix --resample 8000 &amp;lt;audio.wav&amp;gt;
+&lt;/pre&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Combine the .ogg audio into the .webm video container. I prefer to use
+&lt;tt class="docutils literal"&gt;ffmpeg&lt;/tt&gt;. (The &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;Screencasting_fedora-av-splice.sh&lt;/span&gt;&lt;/tt&gt; script available
+&lt;a class="reference external" href="http://fedoraproject.org/wiki/ScreenCasting"&gt;here&lt;/a&gt; should work with the
+original .wav file, but generates a much larger&amp;nbsp;file.):&lt;/p&gt;
+&lt;pre class="literal-block"&gt;
+ffmpeg -i &amp;lt;Screencast.webm&amp;gt; -i &amp;lt;audio.ogg&amp;gt; -acodec copy -vcodec copy &amp;lt;final-merged-audio.webm&amp;gt;
+&lt;/pre&gt;
+&lt;/li&gt;
 &lt;/ol&gt;
 &lt;/div&gt;
 &lt;div class="section" id="slide-timing-tips"&gt;
