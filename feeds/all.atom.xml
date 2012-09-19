@@ -1,5 +1,136 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/usr/share</title><link href="bockel.github.com/" rel="alternate"></link><link href="bockel.github.com/feeds/all.atom.xml" rel="self"></link><id>bockel.github.com/</id><updated>2012-08-22T17:20:00-04:00</updated><entry><title>Converting Presentation to Video</title><link href="bockel.github.com/random/converting-presentation-to-video.html" rel="alternate"></link><updated>2012-08-22T17:20:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-08-22:random/converting-presentation-to-video.html</id><summary type="html">&lt;p&gt;As part of my job, I develop training courses to help teach developers about
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/usr/share</title><link href="bockel.github.com/" rel="alternate"></link><link href="bockel.github.com/feeds/all.atom.xml" rel="self"></link><id>bockel.github.com/</id><updated>2012-09-19T15:35:00-04:00</updated><entry><title>Slidecasting v2</title><link href="bockel.github.com/random/slidecasting-v2.html" rel="alternate"></link><updated>2012-09-19T15:35:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-09-19:random/slidecasting-v2.html</id><summary type="html">&lt;p&gt;The problem with my previous attempt to slidecast a movie, &lt;a class="reference external" href="../random/converting-presentation-to-video.html"&gt;pdf2ogv&lt;/a&gt;, from
+OpenOffice Impress was the lack of&amp;nbsp;flexibility.&lt;/p&gt;
+&lt;p&gt;If you just have a set of pictures or simple slides, that approach is simple
+and straightforward. But what if we want to add some animations and be able to
+draw the audiences attention to something. In those cases, generating a new
+slide for each animation effect is&amp;nbsp;overkill.&lt;/p&gt;
+&lt;p&gt;I want an approach that can leverage the built-in features of OpenOffice (and
+happens to be extensible to any&amp;nbsp;screencast).&lt;/p&gt;
+&lt;p&gt;To start, we have the exact same setup as in &lt;a class="reference external" href="../random/converting-presentation-to-video.html"&gt;pdf2ogv&lt;/a&gt;:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;An OpenDocument Presentation (.odp) file from&amp;nbsp;LibreOffice&lt;/li&gt;
+&lt;li&gt;&lt;a class="reference external" href="http://audacity.sourceforge.net/"&gt;audacity&lt;/a&gt; project file (.aup) with audio recorded as one track per&amp;nbsp;slide&lt;/li&gt;
+&lt;/ul&gt;
+&lt;div class="section" id="instructions"&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;INSTRUCTIONS&lt;/span&gt;&lt;/h2&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;Setup the initial slide presentation in LibreOffice or&amp;nbsp;OpenOffice.&lt;/li&gt;
+&lt;li&gt;Record (or open) the presentation audio track in &lt;a class="reference external" href="http://audacity.sourceforge.net/"&gt;audacity&lt;/a&gt;&lt;ul&gt;
+&lt;li&gt;Ensure each slide is on a different track and that the tracks are ordered&amp;nbsp;sequentially&lt;/li&gt;
+&lt;li&gt;Export the recorded audio as a single .wav&amp;nbsp;file&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;li&gt;Run the following &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;parse-aup&lt;/span&gt;&lt;/tt&gt; (&lt;a class="reference external" href="https://gist.github.com/3752191"&gt;gist&lt;/a&gt;)
+code on the &lt;tt class="docutils literal"&gt;audacity&lt;/tt&gt; .aup project file to output the slide times for
+each&amp;nbsp;track&lt;/li&gt;
+&lt;/ol&gt;
+&lt;pre class="code bash literal-block" id="parse-aup"&gt;
+&lt;span class="c"&gt;#!/bin/sh
+&lt;/span&gt;
+&lt;span class="c"&gt;# Convert a &lt;span class="caps"&gt;PDF&lt;/span&gt; slide presentation and audio track into an &lt;span class="caps"&gt;OGV&lt;/span&gt; video
+# Copyright (C) 2012  William Heinbockel &amp;lt;heinbockel&amp;#64;redhat.com&amp;gt;
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the &lt;span class="caps"&gt;GNU&lt;/span&gt; General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but &lt;span class="caps"&gt;WITHOUT&lt;/span&gt; &lt;span class="caps"&gt;ANY&lt;/span&gt; &lt;span class="caps"&gt;WARRANTY&lt;/span&gt;; without even the implied warranty of
+# &lt;span class="caps"&gt;MERCHANTABILITY&lt;/span&gt; or &lt;span class="caps"&gt;FITNESS&lt;/span&gt; &lt;span class="caps"&gt;FOR&lt;/span&gt; A &lt;span class="caps"&gt;PARTICULAR&lt;/span&gt; &lt;span class="caps"&gt;PURPOSE&lt;/span&gt;.  See the
+# &lt;span class="caps"&gt;GNU&lt;/span&gt; General Public License for more details.
+#
+# You should have received a copy of the &lt;span class="caps"&gt;GNU&lt;/span&gt; General Public License
+# along with this program.  If not, see &amp;lt;http://www.gnu.org/licenses/&amp;gt;.
+&lt;/span&gt;
+&lt;span class="k"&gt;if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; &lt;span class="nv"&gt;$# &lt;/span&gt;-ne 1 &lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="k"&gt;then &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Usage: $0 audacity.aup&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;exit &lt;/span&gt;1
+&lt;span class="k"&gt;fi
+
+if&lt;/span&gt; &lt;span class="o"&gt;[&lt;/span&gt; ! -r &lt;span class="s2"&gt;&amp;quot;$1&amp;quot;&lt;/span&gt; &lt;span class="o"&gt;]&lt;/span&gt;
+&lt;span class="k"&gt;then &lt;/span&gt;&lt;span class="nb"&gt;echo&lt;/span&gt; &lt;span class="s2"&gt;&amp;quot;Error: cannot find audacity file: $1&amp;quot;&lt;/span&gt;
+    &lt;span class="nb"&gt;exit &lt;/span&gt;1
+&lt;span class="k"&gt;fi&lt;/span&gt;
+
+&lt;span class="c"&gt;# Get track lengths
+&lt;/span&gt;cat &lt;span class="s"&gt;&amp;lt;&amp;lt;- &lt;span class="caps"&gt;EOF&lt;/span&gt; | xsltproc --novalid --nonet - &amp;quot;$1&amp;quot;
+&amp;lt;?xml version=&amp;quot;1.0&amp;quot; encoding=&amp;quot;&lt;span class="caps"&gt;UTF&lt;/span&gt;-8&amp;quot;?&amp;gt;
+&amp;lt;xsl:stylesheet version=&amp;quot;1.0&amp;quot;
+    xmlns:xsl=&amp;quot;http://www.w3.org/1999/&lt;span class="caps"&gt;XSL&lt;/span&gt;/Transform&amp;quot;
+    xmlns:a=&amp;quot;http://audacity.sourceforge.net/xml/&amp;quot;&amp;gt;
+    &amp;lt;xsl:output method=&amp;quot;text&amp;quot;/&amp;gt;
+    &amp;lt;xsl:variable name=&amp;quot;rate&amp;quot; select=&amp;quot;/a:project/&amp;#64;rate&amp;quot;/&amp;gt;
+    &amp;lt;xsl:template match=&amp;quot;/a:project&amp;quot;&amp;gt;
+        &amp;lt;xsl:for-each select=&amp;quot;a:wavetrack&amp;quot;&amp;gt;
+            &amp;lt;xsl:value-of select=&amp;quot;concat('Slide ',position(),': ',round(sum(a:waveclip/a:sequence/&amp;#64;numsamples) div \$rate),'s')&amp;quot;/&amp;gt;
+            &amp;lt;xsl:text&amp;gt;
+&amp;lt;/xsl:text&amp;gt;
+        &amp;lt;/xsl:for-each&amp;gt;
+    &amp;lt;/xsl:template&amp;gt;
+    &amp;lt;xsl:template match=&amp;quot;text()&amp;quot;/&amp;gt;
+&amp;lt;/xsl:stylesheet&amp;gt;
+&lt;span class="caps"&gt;EOF&lt;/span&gt;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;ol class="arabic simple" start="4"&gt;
+&lt;li&gt;Open the .odp presentation&amp;nbsp;file&lt;/li&gt;
+&lt;li&gt;Select the first slide. Then go to the top menu and select &lt;em&gt;Slideshow &amp;gt;
+Slide Transition&amp;#8230;&lt;/em&gt;. Under the &lt;em&gt;Modify Transition&lt;/em&gt; section, select the
+value for the Speed (recommend &lt;strong&gt;Medium&lt;/strong&gt;), then choose the Sound drop down.
+In the file chooser panel, select the .wav file you exported from Step&amp;nbsp;2.&lt;/li&gt;
+&lt;li&gt;Go to menu and select &lt;em&gt;Slideshow &amp;gt; Slide Transition&amp;#8230;&lt;/em&gt;. Fill out the
+&lt;em&gt;Advance Slide &amp;gt; Automatically After&lt;/em&gt; value with the slide timings (Step 3)
+for each&amp;nbsp;slide&lt;/li&gt;
+&lt;li&gt;Use &lt;tt class="docutils literal"&gt;audacity&lt;/tt&gt; and the audio file to play and sync the custom animations
+on each slide with the narrative. &lt;strong&gt;&lt;span class="caps"&gt;BEWARE&lt;/span&gt;&lt;/strong&gt;: The slide transition timings
+set in the previous step do not start until the last animation finishes! If
+you have animations, you will have to adjust the times&amp;nbsp;accordingly!&lt;/li&gt;
+&lt;/ol&gt;
+&lt;/div&gt;
+&lt;div class="section" id="slide-timing-tips"&gt;
+&lt;h2&gt;&lt;span class="caps"&gt;SLIDE&lt;/span&gt; &lt;span class="caps"&gt;TIMING&lt;/span&gt;&amp;nbsp;&lt;span class="caps"&gt;TIPS&lt;/span&gt;&lt;/h2&gt;
+&lt;p&gt;It bears&amp;nbsp;repeating:&lt;/p&gt;
+&lt;blockquote&gt;
+The automatic slide transition timings do not start on a slide until all of
+the custom animation effects have finished.&lt;/blockquote&gt;
+&lt;p&gt;To that end, here are some tips to help figure out the proper&amp;nbsp;timings.&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Use the timings from &lt;a class="reference internal" href="#parse-aup"&gt;parse-aup&lt;/a&gt; as the master list of slide&amp;nbsp;times&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Prefer effects to be timed to start &lt;em&gt;With previous&lt;/em&gt; as this makes it easier
+to determine and adjust&amp;nbsp;timings&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;When dealing with lists of text, add each row as a new effect. Avoid using
+the &lt;em&gt;Text Animation&lt;/em&gt; effect options as these effects to not seem to properly
+finish and transition to the next text. Due to these effects not finishing,
+the slide timer will never&amp;nbsp;start.&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;When timing custom&amp;nbsp;animations:&lt;/p&gt;
+&lt;ul&gt;
+&lt;li&gt;&lt;p class="first"&gt;Open the audio in audacity and go to the track for the&amp;nbsp;slide&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Find the point in the audio where you want the effect to&amp;nbsp;start&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Use the audacity selection tool to figure out how far into the track you
+need to wait. Audacity gives timings in second increments and OpenOffice
+allows for half-second precision, so give it your best&amp;nbsp;guess&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Add the effect as&amp;nbsp;normal&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Right click on the effect and select &lt;em&gt;Timing&amp;#8230;&lt;/em&gt;&lt;/p&gt;
+&lt;p&gt;For &lt;strong&gt;Start&lt;/strong&gt;, choose &lt;em&gt;With previous&lt;/em&gt;. This will start the delay count down
+when the slide transition&amp;nbsp;occurs&lt;/p&gt;
+&lt;p&gt;For &lt;strong&gt;Delay&lt;/strong&gt;, enter in the time we got from&amp;nbsp;audacity&lt;/p&gt;
+&lt;/li&gt;
+&lt;li&gt;&lt;p class="first"&gt;Go to the &lt;em&gt;Slide Transition&lt;/em&gt; menu for the slide. Subtract the &lt;strong&gt;delay&lt;/strong&gt;
+time from the overall &lt;em&gt;Advance Slide &amp;gt; Automatically After&lt;/em&gt;&amp;nbsp;time&lt;/p&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/li&gt;
+&lt;/ul&gt;
+&lt;/div&gt;
+</summary><category term="training"></category><category term="presentation"></category><category term="video"></category></entry><entry><title>Converting Presentation to Video</title><link href="bockel.github.com/random/converting-presentation-to-video.html" rel="alternate"></link><updated>2012-08-22T17:20:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-08-22:random/converting-presentation-to-video.html</id><summary type="html">&lt;p&gt;As part of my job, I develop training courses to help teach developers about
 software security. This results in lots of tips, articles, and slide decks.
 While articles and tips are standalone, slides require further explaination.
 Slides should never be made to be independent; otherwise, you end up with

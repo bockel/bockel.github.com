@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    
+    <link href="bockel.github.com/" type="application/atom+xml" rel="alternate" title="/usr<wbr/>/share ATOM Feed" />
+    
+
+    
+    <title>/usr/share/random/slidecasting-v2.html</title>
+        <meta charset="utf-8" />
+    
+    
+    
+</head>
+<body>
+    <section id="sidebar">
+        <div class="sitename"> <a href="/">/usr<wbr/>/share</a></div>
+        
+
+        <div class="user_meta">
+            <h1 id="user"><a href="/" class="">William Heinbockel</a></h1>
+            <h2>Bringing Security to Open Source</h2>
+            <ul>
+                
+                
+                    
+                
+                
+                    <li><a href="http://securityblog.redhat.com">Red Hat Security</a></li>
+                
+                    <li><a href="http://redhat.com">Red Hat</a></li>
+                
+                    <li><a href="http://github.com/bockel">GitHub</a></li>
+                
+            </ul>
+        </div>
+        <footer>
+            <address>
+                Powered by <a href="http://pelican.notmyidea.org/">Pelican</a>,
+                theme by <a href="https://github.com/wting/pelican-svbtle">wting</a>.
+            </address>
+        </footer>
+    </section>
+        
+
+        <section id="content">
+        
+    <article id="blog">
+    
+
+<meta name="title" property="og:title" content="Slidecasting v2" />
+<!-- <meta name="description" property="og:description" content="" /> -->
+
+<meta name="author" content="William Heinbockel" />
+
+<meta name="revised" content="2012-09-19T15:35:00-05:00" />
+
+
+<header>
+
+    <h1>Slidecasting&nbsp;v2</h1>
+    <div class="item-list">
+        <div class="item"><label>file:</label>
+            <a class="item-file" href=".././random/slidecasting-v2.html" rel="bookmark"
+                title="Permalink to Slidecasting v2">random/slidecasting-v2.html</a></div>
+
+        <div class="item"><label>author:</label>William Heinbockel</div>
+
+        <div class="item"><label>published:</label> 2012-09-19T15:35:00-05:00</div>
+
+        <div class="item"><label>updated:</label> 2012-09-19T16:56:55-05:00</div>
+
+    </div>
+
+</header>
+    <p>The problem with my previous attempt to slidecast a movie, <a class="reference external" href="../random/converting-presentation-to-video.html">pdf2ogv</a>, from
+OpenOffice Impress was the lack of&nbsp;flexibility.</p>
+<p>If you just have a set of pictures or simple slides, that approach is simple
+and straightforward. But what if we want to add some animations and be able to
+draw the audiences attention to something. In those cases, generating a new
+slide for each animation effect is&nbsp;overkill.</p>
+<p>I want an approach that can leverage the built-in features of OpenOffice (and
+happens to be extensible to any&nbsp;screencast).</p>
+<p>To start, we have the exact same setup as in <a class="reference external" href="../random/converting-presentation-to-video.html">pdf2ogv</a>:</p>
+<ul class="simple">
+<li>An OpenDocument Presentation (.odp) file from&nbsp;LibreOffice</li>
+<li><a class="reference external" href="http://audacity.sourceforge.net/">audacity</a> project file (.aup) with audio recorded as one track per&nbsp;slide</li>
+</ul>
+<div class="section" id="instructions">
+<h2><span class="caps">INSTRUCTIONS</span></h2>
+<ol class="arabic simple">
+<li>Setup the initial slide presentation in LibreOffice or&nbsp;OpenOffice.</li>
+<li>Record (or open) the presentation audio track in <a class="reference external" href="http://audacity.sourceforge.net/">audacity</a><ul>
+<li>Ensure each slide is on a different track and that the tracks are ordered&nbsp;sequentially</li>
+<li>Export the recorded audio as a single .wav&nbsp;file</li>
+</ul>
+</li>
+<li>Run the following <tt class="docutils literal"><span class="pre">parse-aup</span></tt> (<a class="reference external" href="https://gist.github.com/3752191">gist</a>)
+code on the <tt class="docutils literal">audacity</tt> .aup project file to output the slide times for
+each&nbsp;track</li>
+</ol>
+<pre class="code bash literal-block" id="parse-aup">
+<span class="c">#!/bin/sh
+</span>
+<span class="c"># Convert a <span class="caps">PDF</span> slide presentation and audio track into an <span class="caps">OGV</span> video
+# Copyright (C) 2012  William Heinbockel &lt;heinbockel&#64;redhat.com&gt;
+#
+# This program is free software: you can redistribute it and/or modify
+# it under the terms of the <span class="caps">GNU</span> General Public License as published by
+# the Free Software Foundation, either version 3 of the License, or
+# (at your option) any later version.
+#
+# This program is distributed in the hope that it will be useful,
+# but <span class="caps">WITHOUT</span> <span class="caps">ANY</span> <span class="caps">WARRANTY</span>; without even the implied warranty of
+# <span class="caps">MERCHANTABILITY</span> or <span class="caps">FITNESS</span> <span class="caps">FOR</span> A <span class="caps">PARTICULAR</span> <span class="caps">PURPOSE</span>.  See the
+# <span class="caps">GNU</span> General Public License for more details.
+#
+# You should have received a copy of the <span class="caps">GNU</span> General Public License
+# along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.
+</span>
+<span class="k">if</span> <span class="o">[</span> <span class="nv">$# </span>-ne 1 <span class="o">]</span>
+<span class="k">then </span><span class="nb">echo</span> <span class="s2">&quot;Usage: $0 audacity.aup&quot;</span>
+    <span class="nb">exit </span>1
+<span class="k">fi
+
+if</span> <span class="o">[</span> ! -r <span class="s2">&quot;$1&quot;</span> <span class="o">]</span>
+<span class="k">then </span><span class="nb">echo</span> <span class="s2">&quot;Error: cannot find audacity file: $1&quot;</span>
+    <span class="nb">exit </span>1
+<span class="k">fi</span>
+
+<span class="c"># Get track lengths
+</span>cat <span class="s">&lt;&lt;- <span class="caps">EOF</span> | xsltproc --novalid --nonet - &quot;$1&quot;
+&lt;?xml version=&quot;1.0&quot; encoding=&quot;<span class="caps">UTF</span>-8&quot;?&gt;
+&lt;xsl:stylesheet version=&quot;1.0&quot;
+    xmlns:xsl=&quot;http://www.w3.org/1999/<span class="caps">XSL</span>/Transform&quot;
+    xmlns:a=&quot;http://audacity.sourceforge.net/xml/&quot;&gt;
+    &lt;xsl:output method=&quot;text&quot;/&gt;
+    &lt;xsl:variable name=&quot;rate&quot; select=&quot;/a:project/&#64;rate&quot;/&gt;
+    &lt;xsl:template match=&quot;/a:project&quot;&gt;
+        &lt;xsl:for-each select=&quot;a:wavetrack&quot;&gt;
+            &lt;xsl:value-of select=&quot;concat('Slide ',position(),': ',round(sum(a:waveclip/a:sequence/&#64;numsamples) div \$rate),'s')&quot;/&gt;
+            &lt;xsl:text&gt;
+&lt;/xsl:text&gt;
+        &lt;/xsl:for-each&gt;
+    &lt;/xsl:template&gt;
+    &lt;xsl:template match=&quot;text()&quot;/&gt;
+&lt;/xsl:stylesheet&gt;
+<span class="caps">EOF</span></span>
+</pre>
+<ol class="arabic simple" start="4">
+<li>Open the .odp presentation&nbsp;file</li>
+<li>Select the first slide. Then go to the top menu and select <em>Slideshow &gt;
+Slide Transition&#8230;</em>. Under the <em>Modify Transition</em> section, select the
+value for the Speed (recommend <strong>Medium</strong>), then choose the Sound drop down.
+In the file chooser panel, select the .wav file you exported from Step&nbsp;2.</li>
+<li>Go to menu and select <em>Slideshow &gt; Slide Transition&#8230;</em>. Fill out the
+<em>Advance Slide &gt; Automatically After</em> value with the slide timings (Step 3)
+for each&nbsp;slide</li>
+<li>Use <tt class="docutils literal">audacity</tt> and the audio file to play and sync the custom animations
+on each slide with the narrative. <strong><span class="caps">BEWARE</span></strong>: The slide transition timings
+set in the previous step do not start until the last animation finishes! If
+you have animations, you will have to adjust the times&nbsp;accordingly!</li>
+</ol>
+</div>
+<div class="section" id="slide-timing-tips">
+<h2><span class="caps">SLIDE</span> <span class="caps">TIMING</span>&nbsp;<span class="caps">TIPS</span></h2>
+<p>It bears&nbsp;repeating:</p>
+<blockquote>
+The automatic slide transition timings do not start on a slide until all of
+the custom animation effects have finished.</blockquote>
+<p>To that end, here are some tips to help figure out the proper&nbsp;timings.</p>
+<ul>
+<li><p class="first">Use the timings from <a class="reference internal" href="#parse-aup">parse-aup</a> as the master list of slide&nbsp;times</p>
+</li>
+<li><p class="first">Prefer effects to be timed to start <em>With previous</em> as this makes it easier
+to determine and adjust&nbsp;timings</p>
+</li>
+<li><p class="first">When dealing with lists of text, add each row as a new effect. Avoid using
+the <em>Text Animation</em> effect options as these effects to not seem to properly
+finish and transition to the next text. Due to these effects not finishing,
+the slide timer will never&nbsp;start.</p>
+</li>
+<li><p class="first">When timing custom&nbsp;animations:</p>
+<ul>
+<li><p class="first">Open the audio in audacity and go to the track for the&nbsp;slide</p>
+</li>
+<li><p class="first">Find the point in the audio where you want the effect to&nbsp;start</p>
+</li>
+<li><p class="first">Use the audacity selection tool to figure out how far into the track you
+need to wait. Audacity gives timings in second increments and OpenOffice
+allows for half-second precision, so give it your best&nbsp;guess</p>
+</li>
+<li><p class="first">Add the effect as&nbsp;normal</p>
+</li>
+<li><p class="first">Right click on the effect and select <em>Timing&#8230;</em></p>
+<p>For <strong>Start</strong>, choose <em>With previous</em>. This will start the delay count down
+when the slide transition&nbsp;occurs</p>
+<p>For <strong>Delay</strong>, enter in the time we got from&nbsp;audacity</p>
+</li>
+<li><p class="first">Go to the <em>Slide Transition</em> menu for the slide. Subtract the <strong>delay</strong>
+time from the overall <em>Advance Slide &gt; Automatically After</em>&nbsp;time</p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+
+
+    <footer>
+    <div id="article_meta">
+        
+            Category:
+            <a href=".././random/">/usr<wbr/>/share/random</a>
+        
+        
+            <br />Tags:
+            
+                <a href=".././tag/training.html">training</a>
+            
+                <a href=".././tag/presentation.html">presentation</a>
+            
+                <a href=".././tag/video.html">video</a>
+            
+        
+    </div>
+
+    
+    </footer>
+    </article>
+
+    
+    <div id="comments">
+        <h3>Discussion</h3>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_identifier = "random/slidecasting-v2.html";
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://usr-share.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view <a href="http://disqus.com/?ref_noscript">comments</a>.</noscript>
+    </div>
+    
+
+
+        <div class="footer">
+            <div id="copyright">
+                <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="/theme/img/cc88x31.png" /></a><br />Except where otherise noted, content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a></div>
+            <p id="disclosure">All information contained within this blog is my
+            own opinion and is not intended to constitute advice or technical
+            support. The content is not represented of, or affliated with my
+            current or previous employers.</p>
+        </div>
+        </section>
+
+
+    
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-34392261-1");
+			pageTracker._trackPageview();
+		} catch(err) {}</script>
+
+</body>
+</html>
