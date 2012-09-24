@@ -1,5 +1,58 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/usr/share</title><link href="bockel.github.com/" rel="alternate"></link><link href="bockel.github.com/feeds/random.atom.xml" rel="self"></link><id>bockel.github.com/</id><updated>2012-09-19T15:35:00-04:00</updated><entry><title>Slidecasting v2</title><link href="bockel.github.com/random/slidecasting-v2.html" rel="alternate"></link><updated>2012-09-19T15:35:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-09-19:random/slidecasting-v2.html</id><summary type="html">&lt;p&gt;The problem with my previous attempt to slidecast a movie, &lt;a class="reference external" href="../random/converting-presentation-to-video.html"&gt;pdf2ogv&lt;/a&gt;, from
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/usr/share</title><link href="bockel.github.com/" rel="alternate"></link><link href="bockel.github.com/feeds/random.atom.xml" rel="self"></link><id>bockel.github.com/</id><updated>2012-09-24T17:47:00-04:00</updated><entry><title>Gnome3 Screencasting</title><link href="bockel.github.com/random/gnome3-screencasting.html" rel="alternate"></link><updated>2012-09-24T17:47:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-09-24:random/gnome3-screencasting.html</id><summary type="html">&lt;p&gt;Continuing on a little mini-series of slide- and screen-casting notes (post &lt;a class="reference external" href="http://bockel.github.com/random/converting-presentation-to-video.html"&gt;1&lt;/a&gt;, &lt;a class="reference external" href="http://bockel.github.com/random/slidecasting-v2.html"&gt;2&lt;/a&gt;) here is an overview
+of the screencast recorder built into&amp;nbsp;&lt;span class="caps"&gt;GNOME3&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;Normally, you can just hit &lt;tt class="docutils literal"&gt;ctrl+alt+shift+r&lt;/tt&gt; in &lt;span class="caps"&gt;GNOME&lt;/span&gt; and it will start
+recording the screen as a &lt;a class="reference external" href="http://www.webmproject.org/"&gt;webm&lt;/a&gt; video. To stop, hit &lt;tt class="docutils literal"&gt;ctrl+alt+shift+r&lt;/tt&gt; again.&lt;/p&gt;
+&lt;p&gt;Under the hood, record uses gstreamer. The webm support is part of the
+gstreamer &lt;a class="reference external" href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad-plugins/html/gst-plugins-bad-plugins-vp8enc.html"&gt;vp8enc&lt;/a&gt; package. To use this Fedora, you must first install the
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;gstreamer-plugins-bad&lt;/span&gt;&lt;/tt&gt; package, which is available through &lt;a class="reference external" href="http://rpmfusion.org/"&gt;RPMFusion&lt;/a&gt;.&lt;/p&gt;
+&lt;p&gt;Note that do to the way the screencast pipelines are configured, new recordings
+will be appended to the end of the first recording. The easiest way I&amp;#8217;ve found
+to stop this is to reset gnome-shell (&lt;tt class="docutils literal"&gt;alt+F2&lt;/tt&gt;, &lt;tt class="docutils literal"&gt;r&lt;/tt&gt;,&amp;nbsp;enter).&lt;/p&gt;
+&lt;div class="section" id="configure-gnome-shell-recorder"&gt;
+&lt;h2&gt;Configure &lt;span class="caps"&gt;GNOME&lt;/span&gt; Shell&amp;nbsp;Recorder&lt;/h2&gt;
+&lt;p&gt;By default, &lt;span class="caps"&gt;GNOME&lt;/span&gt; Record does not record audio. To enable it, you must change
+the recorder pipeline. This can be done via the command line or through
+&lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;dconf-editor&lt;/span&gt;&lt;/tt&gt;&lt;/p&gt;
+&lt;p&gt;To configure the &lt;span class="caps"&gt;GNOME&lt;/span&gt; Shell Recorder to record the audio via pulse (for a list
+of other gstreamer sources &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; sinks, see the output of &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;gst-inspect&lt;/span&gt;&lt;/tt&gt;):&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+gsettings &lt;span class="nb"&gt;set &lt;/span&gt;org.gnome.shell.recorder pipeline &lt;span class="s2"&gt;&amp;quot;queue ! videorate !
+  vp8enc quality=8 speed=4 threads=%T ! mux. pulsesrc ! audio/x-raw-int
+  ! audioconvert ! vorbisenc ! mux. webmmux name=mux&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;Since the default &lt;a class="reference external" href="http://www.webmproject.org/"&gt;webm&lt;/a&gt; format requires additional gstreamer plugins, you may
+prefer to use the Ogg Theora (ogv) video format instead, which is supported in
+the base gstreamer package). To do this and use &lt;em&gt;video/x-theora&lt;/em&gt; with
+&lt;em&gt;audio/x-vorbis&lt;/em&gt;:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+gsettings &lt;span class="nb"&gt;set &lt;/span&gt;org.gnome.shell.recorder file-extension &lt;span class="s2"&gt;&amp;quot;ogv&amp;quot;&lt;/span&gt;
+gsettings &lt;span class="nb"&gt;set &lt;/span&gt;org.gnome.shell.recorder pipeline &lt;span class="s2"&gt;&amp;quot;queue ! videorate
+  ! theoraenc ! mux. pulsesrc ! audio/x-raw-int ! audioconvert
+  ! vorbisenc quality=0 ! mux. oggmux&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;p&gt;For higher or lower quality video and audio, check the &lt;a class="reference external" href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-theoraenc.html"&gt;theoraenc&lt;/a&gt; and
+&lt;a class="reference external" href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-vorbisenc.html"&gt;vorbisenc&lt;/a&gt; gstreamer plugins&amp;nbsp;pages.&lt;/p&gt;
+&lt;p&gt;To change the framerate, to say 15 frames per&amp;nbsp;second:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+gsettings &lt;span class="nb"&gt;set &lt;/span&gt;org.gnome.shell.recorder framerate 15
+&lt;/pre&gt;
+&lt;p&gt;To reset the &lt;span class="caps"&gt;GNOME&lt;/span&gt; recorder to its defaults,&amp;nbsp;run:&lt;/p&gt;
+&lt;pre class="code bash literal-block"&gt;
+gsettings reset-recursively org.gnome.shell.recorder
+&lt;/pre&gt;
+&lt;/div&gt;
+&lt;div class="section" id="capture-system-audio"&gt;
+&lt;h2&gt;Capture System&amp;nbsp;Audio&lt;/h2&gt;
+&lt;p&gt;To enable the recording the audio from an application (e.g., firefox,
+rhythmbox, impress), we have to change the recording source from the line-in to
+a monitor. To do this, open the &amp;#8220;Pulse Audio Volume Control&amp;#8221; (&lt;cite&gt;pavucontrol&lt;/cite&gt;)
+and go to the recording&amp;nbsp;tab.&lt;/p&gt;
+&lt;p&gt;Make sure &amp;#8220;Application&amp;#8221; is selected in the lower right. Now start the recording
+application (&lt;tt class="docutils literal"&gt;ctrl+alt+shift+r&lt;/tt&gt;) to make it appear. It doesn&amp;#8217;t matter what
+you are&amp;nbsp;recording.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="training"></category><category term="presentation"></category><category term="video"></category></entry><entry><title>Slidecasting v2</title><link href="bockel.github.com/random/slidecasting-v2.html" rel="alternate"></link><updated>2012-09-19T15:35:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-09-19:random/slidecasting-v2.html</id><summary type="html">&lt;p&gt;The problem with my previous attempt to slidecast a movie, &lt;a class="reference external" href="http://bockel.github.com/random/converting-presentation-to-video.html"&gt;pdf2ogv&lt;/a&gt;, from
 OpenOffice Impress was the lack of&amp;nbsp;flexibility.&lt;/p&gt;
 &lt;p&gt;If you just have a set of pictures or simple slides, that approach is simple
 and straightforward. But what if we want to add some animations and be able to
@@ -7,7 +60,7 @@ draw the audiences attention to something. In those cases, generating a new
 slide for each animation effect is&amp;nbsp;overkill.&lt;/p&gt;
 &lt;p&gt;I want an approach that can leverage the built-in features of OpenOffice (and
 happens to be extensible to any&amp;nbsp;screencast).&lt;/p&gt;
-&lt;p&gt;To start, we have the exact same setup as in &lt;a class="reference external" href="../random/converting-presentation-to-video.html"&gt;pdf2ogv&lt;/a&gt;:&lt;/p&gt;
+&lt;p&gt;To start, we have the exact same setup as in &lt;a class="reference external" href="http://bockel.github.com/random/converting-presentation-to-video.html"&gt;pdf2ogv&lt;/a&gt;:&lt;/p&gt;
 &lt;ul class="simple"&gt;
 &lt;li&gt;An OpenDocument Presentation (.odp) file from&amp;nbsp;LibreOffice&lt;/li&gt;
 &lt;li&gt;&lt;a class="reference external" href="http://audacity.sourceforge.net/"&gt;audacity&lt;/a&gt; project file (.aup) with audio recorded as one track per&amp;nbsp;slide&lt;/li&gt;
@@ -101,18 +154,22 @@ the key combo once more to stop recording. This produces a
 not capture the&amp;nbsp;audio)&lt;/li&gt;
 &lt;/ul&gt;
 &lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Encode the .wav audio into a .ogg format (downmix into 1 mono channel,
-resample to&amp;nbsp;8000Hz):&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-oggenc --downmix --resample 8000 &amp;lt;audio.wav&amp;gt;
-&lt;/pre&gt;
-&lt;/li&gt;
-&lt;li&gt;&lt;p class="first"&gt;Combine the .ogg audio into the .webm video container. I prefer to use
+&lt;li&gt;&lt;p class="first"&gt;Combine the audio and video container. I prefer to use
 &lt;tt class="docutils literal"&gt;ffmpeg&lt;/tt&gt;. (The &lt;tt class="docutils literal"&gt;&lt;span class="pre"&gt;Screencasting_fedora-av-splice.sh&lt;/span&gt;&lt;/tt&gt; script available
-&lt;a class="reference external" href="http://fedoraproject.org/wiki/ScreenCasting"&gt;here&lt;/a&gt; should work with the
-original .wav file, but generates a much larger&amp;nbsp;file.):&lt;/p&gt;
-&lt;pre class="literal-block"&gt;
-ffmpeg -i &amp;lt;Screencast.webm&amp;gt; -i &amp;lt;audio.ogg&amp;gt; -acodec copy -vcodec copy &amp;lt;final-merged-audio.webm&amp;gt;
+&lt;a class="reference external" href="http://fedoraproject.org/wiki/ScreenCasting"&gt;here&lt;/a&gt; should work as&amp;nbsp;well.)&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;To keep the .webm&amp;nbsp;format:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+ffmpeg -i &lt;span class="s2"&gt;&amp;quot;Screencast.webm&amp;quot;&lt;/span&gt; -i &lt;span class="s2"&gt;&amp;quot;audio.wav&amp;quot;&lt;/span&gt; -map 0:0 -map 1:0 &lt;span class="se"&gt;\
+&lt;/span&gt;    -filter:a earwax -ar 32000 -c:a libvorbis -c:v copy &lt;span class="s2"&gt;&amp;quot;output.webm&amp;quot;&lt;/span&gt;
+&lt;/pre&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;To record the .webm into an Ogg .ogv&amp;nbsp;container:&lt;/li&gt;
+&lt;/ul&gt;
+&lt;pre class="code bash literal-block"&gt;
+ffmpeg -i &lt;span class="s2"&gt;&amp;quot;Screencast.webm&amp;quot;&lt;/span&gt; -i &lt;span class="s2"&gt;&amp;quot;audio.wav&amp;quot;&lt;/span&gt; -map 0:0 -map 1:0 &lt;span class="se"&gt;\
+&lt;/span&gt;    -filter:a earwax -ac 2 -ar 32000 -c:a libspeex -c:v libtheora -r 10 &lt;span class="s2"&gt;&amp;quot;output.ogv&amp;quot;&lt;/span&gt;
 &lt;/pre&gt;
 &lt;/li&gt;
 &lt;/ol&gt;

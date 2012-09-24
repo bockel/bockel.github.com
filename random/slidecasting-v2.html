@@ -70,12 +70,12 @@
 
         <div class="item"><label>published:</label> 2012-09-19T15:35:00-05:00</div>
 
-        <div class="item"><label>updated:</label> 2012-09-19T17:40:34-05:00</div>
+        <div class="item"><label>updated:</label> 2012-09-24T19:07:43-05:00</div>
 
     </div>
 
 </header>
-    <p>The problem with my previous attempt to slidecast a movie, <a class="reference external" href="../random/converting-presentation-to-video.html">pdf2ogv</a>, from
+    <p>The problem with my previous attempt to slidecast a movie, <a class="reference external" href="http://bockel.github.com/random/converting-presentation-to-video.html">pdf2ogv</a>, from
 OpenOffice Impress was the lack of&nbsp;flexibility.</p>
 <p>If you just have a set of pictures or simple slides, that approach is simple
 and straightforward. But what if we want to add some animations and be able to
@@ -83,7 +83,7 @@ draw the audiences attention to something. In those cases, generating a new
 slide for each animation effect is&nbsp;overkill.</p>
 <p>I want an approach that can leverage the built-in features of OpenOffice (and
 happens to be extensible to any&nbsp;screencast).</p>
-<p>To start, we have the exact same setup as in <a class="reference external" href="../random/converting-presentation-to-video.html">pdf2ogv</a>:</p>
+<p>To start, we have the exact same setup as in <a class="reference external" href="http://bockel.github.com/random/converting-presentation-to-video.html">pdf2ogv</a>:</p>
 <ul class="simple">
 <li>An OpenDocument Presentation (.odp) file from&nbsp;LibreOffice</li>
 <li><a class="reference external" href="http://audacity.sourceforge.net/">audacity</a> project file (.aup) with audio recorded as one track per&nbsp;slide</li>
@@ -177,18 +177,22 @@ the key combo once more to stop recording. This produces a
 not capture the&nbsp;audio)</li>
 </ul>
 </li>
-<li><p class="first">Encode the .wav audio into a .ogg format (downmix into 1 mono channel,
-resample to&nbsp;8000Hz):</p>
-<pre class="literal-block">
-oggenc --downmix --resample 8000 &lt;audio.wav&gt;
-</pre>
-</li>
-<li><p class="first">Combine the .ogg audio into the .webm video container. I prefer to use
+<li><p class="first">Combine the audio and video container. I prefer to use
 <tt class="docutils literal">ffmpeg</tt>. (The <tt class="docutils literal"><span class="pre">Screencasting_fedora-av-splice.sh</span></tt> script available
-<a class="reference external" href="http://fedoraproject.org/wiki/ScreenCasting">here</a> should work with the
-original .wav file, but generates a much larger&nbsp;file.):</p>
-<pre class="literal-block">
-ffmpeg -i &lt;Screencast.webm&gt; -i &lt;audio.ogg&gt; -acodec copy -vcodec copy &lt;final-merged-audio.webm&gt;
+<a class="reference external" href="http://fedoraproject.org/wiki/ScreenCasting">here</a> should work as&nbsp;well.)</p>
+<ul class="simple">
+<li>To keep the .webm&nbsp;format:</li>
+</ul>
+<pre class="code bash literal-block">
+ffmpeg -i <span class="s2">&quot;Screencast.webm&quot;</span> -i <span class="s2">&quot;audio.wav&quot;</span> -map 0:0 -map 1:0 <span class="se">\
+</span>    -filter:a earwax -ar 32000 -c:a libvorbis -c:v copy <span class="s2">&quot;output.webm&quot;</span>
+</pre>
+<ul class="simple">
+<li>To record the .webm into an Ogg .ogv&nbsp;container:</li>
+</ul>
+<pre class="code bash literal-block">
+ffmpeg -i <span class="s2">&quot;Screencast.webm&quot;</span> -i <span class="s2">&quot;audio.wav&quot;</span> -map 0:0 -map 1:0 <span class="se">\
+</span>    -filter:a earwax -ac 2 -ar 32000 -c:a libspeex -c:v libtheora -r 10 <span class="s2">&quot;output.ogv&quot;</span>
 </pre>
 </li>
 </ol>

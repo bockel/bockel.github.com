@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    
+    <link href="bockel.github.com/" type="application/atom+xml" rel="alternate" title="/usr<wbr/>/share ATOM Feed" />
+    
+
+    
+    <title>/usr/share/random/gnome3-screencasting.html</title>
+        <meta charset="utf-8" />
+    
+    
+    
+</head>
+<body>
+    <section id="sidebar">
+        <div class="sitename"> <a href="/">/usr<wbr/>/share</a></div>
+        
+
+        <div class="user_meta">
+            <h1 id="user"><a href="/" class="">William Heinbockel</a></h1>
+            <h2>Bringing Security to Open Source</h2>
+            <ul>
+                
+                
+                    
+                
+                
+                    <li><a href="http://securityblog.redhat.com">Red Hat Security</a></li>
+                
+                    <li><a href="http://redhat.com">Red Hat</a></li>
+                
+                    <li><a href="http://github.com/bockel">GitHub</a></li>
+                
+            </ul>
+        </div>
+        <footer>
+            <address>
+                Powered by <a href="http://pelican.notmyidea.org/">Pelican</a>,
+                theme by <a href="https://github.com/wting/pelican-svbtle">wting</a>.
+            </address>
+        </footer>
+    </section>
+        
+
+        <section id="content">
+        
+    <article id="blog">
+    
+
+<meta name="title" property="og:title" content="Gnome3 Screencasting" />
+<!-- <meta name="description" property="og:description" content="" /> -->
+
+<meta name="author" content="William Heinbockel" />
+
+<meta name="revised" content="2012-09-24T17:47:00-05:00" />
+
+
+<header>
+
+    <h1>Gnome3&nbsp;Screencasting</h1>
+    <div class="item-list">
+        <div class="item"><label>file:</label>
+            <a class="item-file" href=".././random/gnome3-screencasting.html" rel="bookmark"
+                title="Permalink to Gnome3 Screencasting">random/gnome3-screencasting.html</a></div>
+
+        <div class="item"><label>author:</label>William Heinbockel</div>
+
+        <div class="item"><label>published:</label> 2012-09-24T17:47:00-05:00</div>
+
+        <div class="item"><label>updated:</label> 2012-09-24T19:15:56-05:00</div>
+
+    </div>
+
+</header>
+    <p>Continuing on a little mini-series of slide- and screen-casting notes (post <a class="reference external" href="http://bockel.github.com/random/converting-presentation-to-video.html">1</a>, <a class="reference external" href="http://bockel.github.com/random/slidecasting-v2.html">2</a>) here is an overview
+of the screencast recorder built into&nbsp;<span class="caps">GNOME3</span>.</p>
+<p>Normally, you can just hit <tt class="docutils literal">ctrl+alt+shift+r</tt> in <span class="caps">GNOME</span> and it will start
+recording the screen as a <a class="reference external" href="http://www.webmproject.org/">webm</a> video. To stop, hit <tt class="docutils literal">ctrl+alt+shift+r</tt> again.</p>
+<p>Under the hood, record uses gstreamer. The webm support is part of the
+gstreamer <a class="reference external" href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-bad-plugins/html/gst-plugins-bad-plugins-vp8enc.html">vp8enc</a> package. To use this Fedora, you must first install the
+<tt class="docutils literal"><span class="pre">gstreamer-plugins-bad</span></tt> package, which is available through <a class="reference external" href="http://rpmfusion.org/">RPMFusion</a>.</p>
+<p>Note that do to the way the screencast pipelines are configured, new recordings
+will be appended to the end of the first recording. The easiest way I&#8217;ve found
+to stop this is to reset gnome-shell (<tt class="docutils literal">alt+F2</tt>, <tt class="docutils literal">r</tt>,&nbsp;enter).</p>
+<div class="section" id="configure-gnome-shell-recorder">
+<h2>Configure <span class="caps">GNOME</span> Shell&nbsp;Recorder</h2>
+<p>By default, <span class="caps">GNOME</span> Record does not record audio. To enable it, you must change
+the recorder pipeline. This can be done via the command line or through
+<tt class="docutils literal"><span class="pre">dconf-editor</span></tt></p>
+<p>To configure the <span class="caps">GNOME</span> Shell Recorder to record the audio via pulse (for a list
+of other gstreamer sources <span class="amp">&amp;</span> sinks, see the output of <tt class="docutils literal"><span class="pre">gst-inspect</span></tt>):</p>
+<pre class="code bash literal-block">
+gsettings <span class="nb">set </span>org.gnome.shell.recorder pipeline <span class="s2">&quot;queue ! videorate !
+  vp8enc quality=8 speed=4 threads=%T ! mux. pulsesrc ! audio/x-raw-int
+  ! audioconvert ! vorbisenc ! mux. webmmux name=mux&quot;</span>
+</pre>
+<p>Since the default <a class="reference external" href="http://www.webmproject.org/">webm</a> format requires additional gstreamer plugins, you may
+prefer to use the Ogg Theora (ogv) video format instead, which is supported in
+the base gstreamer package). To do this and use <em>video/x-theora</em> with
+<em>audio/x-vorbis</em>:</p>
+<pre class="code bash literal-block">
+gsettings <span class="nb">set </span>org.gnome.shell.recorder file-extension <span class="s2">&quot;ogv&quot;</span>
+gsettings <span class="nb">set </span>org.gnome.shell.recorder pipeline <span class="s2">&quot;queue ! videorate
+  ! theoraenc ! mux. pulsesrc ! audio/x-raw-int ! audioconvert
+  ! vorbisenc quality=0 ! mux. oggmux&quot;</span>
+</pre>
+<p>For higher or lower quality video and audio, check the <a class="reference external" href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-theoraenc.html">theoraenc</a> and
+<a class="reference external" href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-vorbisenc.html">vorbisenc</a> gstreamer plugins&nbsp;pages.</p>
+<p>To change the framerate, to say 15 frames per&nbsp;second:</p>
+<pre class="code bash literal-block">
+gsettings <span class="nb">set </span>org.gnome.shell.recorder framerate 15
+</pre>
+<p>To reset the <span class="caps">GNOME</span> recorder to its defaults,&nbsp;run:</p>
+<pre class="code bash literal-block">
+gsettings reset-recursively org.gnome.shell.recorder
+</pre>
+</div>
+<div class="section" id="capture-system-audio">
+<h2>Capture System&nbsp;Audio</h2>
+<p>To enable the recording the audio from an application (e.g., firefox,
+rhythmbox, impress), we have to change the recording source from the line-in to
+a monitor. To do this, open the &#8220;Pulse Audio Volume Control&#8221; (<cite>pavucontrol</cite>)
+and go to the recording&nbsp;tab.</p>
+<p>Make sure &#8220;Application&#8221; is selected in the lower right. Now start the recording
+application (<tt class="docutils literal">ctrl+alt+shift+r</tt>) to make it appear. It doesn&#8217;t matter what
+you are&nbsp;recording.</p>
+</div>
+
+
+    <footer>
+    <div id="article_meta">
+        
+            Category:
+            <a href=".././random/">/usr<wbr/>/share/random</a>
+        
+        
+            <br />Tags:
+            
+                <a href=".././tag/training.html">training</a>
+            
+                <a href=".././tag/presentation.html">presentation</a>
+            
+                <a href=".././tag/video.html">video</a>
+            
+        
+    </div>
+
+    
+    </footer>
+    </article>
+
+    
+    <div id="comments">
+        <h3>Discussion</h3>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_identifier = "random/gnome3-screencasting.html";
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://usr-share.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view <a href="http://disqus.com/?ref_noscript">comments</a>.</noscript>
+    </div>
+    
+
+
+        <div class="footer">
+            <div id="copyright">
+                <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="/theme/img/cc88x31.png" /></a><br />Except where otherise noted, content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a></div>
+            <p id="disclosure">All information contained within this blog is my
+            own opinion and is not intended to constitute advice or technical
+            support. The content is not represented of, or affliated with my
+            current or previous employers.</p>
+        </div>
+        </section>
+
+
+    
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-34392261-1");
+			pageTracker._trackPageview();
+		} catch(err) {}</script>
+
+</body>
+</html>
