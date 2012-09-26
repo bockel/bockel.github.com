@@ -70,12 +70,14 @@
 
         <div class="item"><label>published:</label> 2012-09-24T17:47:00-05:00</div>
 
-        <div class="item"><label>updated:</label> 2012-09-24T19:15:56-05:00</div>
+        <div class="item"><label>updated:</label> 2012-09-26T16:07:35-05:00</div>
 
     </div>
 
 </header>
-    <p>Continuing on a little mini-series of slide- and screen-casting notes (post <a class="reference external" href="http://bockel.github.com/random/converting-presentation-to-video.html">1</a>, <a class="reference external" href="http://bockel.github.com/random/slidecasting-v2.html">2</a>) here is an overview
+    <p><em>Updated 2012-09-26:</em> Fix the gsettings pipeline commands; add current
+slidecasting&nbsp;configuration</p>
+<p>Continuing on a little mini-series of slide- and screen-casting notes (post <a class="reference external" href="http://bockel.github.com/random/converting-presentation-to-video.html">1</a>, <a class="reference external" href="http://bockel.github.com/random/slidecasting-v2.html">2</a>) here is an overview
 of the screencast recorder built into&nbsp;<span class="caps">GNOME3</span>.</p>
 <p>Normally, you can just hit <tt class="docutils literal">ctrl+alt+shift+r</tt> in <span class="caps">GNOME</span> and it will start
 recording the screen as a <a class="reference external" href="http://www.webmproject.org/">webm</a> video. To stop, hit <tt class="docutils literal">ctrl+alt+shift+r</tt> again.</p>
@@ -93,8 +95,8 @@ the recorder pipeline. This can be done via the command line or through
 <p>To configure the <span class="caps">GNOME</span> Shell Recorder to record the audio via pulse (for a list
 of other gstreamer sources <span class="amp">&amp;</span> sinks, see the output of <tt class="docutils literal"><span class="pre">gst-inspect</span></tt>):</p>
 <pre class="code bash literal-block">
-gsettings <span class="nb">set </span>org.gnome.shell.recorder pipeline <span class="s2">&quot;queue ! videorate !
-  vp8enc quality=8 speed=4 threads=%T ! mux. pulsesrc ! audio/x-raw-int
+gsettings <span class="nb">set </span>org.gnome.shell.recorder pipeline <span class="s2">&quot;queue ! videorate \
+  ! vp8enc quality=8 speed=4 threads=%T ! mux. pulsesrc ! audio/x-raw-int \
   ! audioconvert ! vorbisenc ! mux. webmmux name=mux&quot;</span>
 </pre>
 <p>Since the default <a class="reference external" href="http://www.webmproject.org/">webm</a> format requires additional gstreamer plugins, you may
@@ -103,20 +105,34 @@ the base gstreamer package). To do this and use <em>video/x-theora</em> with
 <em>audio/x-vorbis</em>:</p>
 <pre class="code bash literal-block">
 gsettings <span class="nb">set </span>org.gnome.shell.recorder file-extension <span class="s2">&quot;ogv&quot;</span>
-gsettings <span class="nb">set </span>org.gnome.shell.recorder pipeline <span class="s2">&quot;queue ! videorate
-  ! theoraenc ! mux. pulsesrc ! audio/x-raw-int ! audioconvert
-  ! vorbisenc quality=0 ! mux. oggmux&quot;</span>
+gsettings <span class="nb">set </span>org.gnome.shell.recorder pipeline <span class="s2">&quot;queue ! videorate \
+  ! theoraenc ! mux. pulsesrc ! audio/x-raw-int ! audioconvert \
+  ! vorbisenc quality=0 ! mux. oggmux name=mux&quot;</span>
 </pre>
 <p>For higher or lower quality video and audio, check the <a class="reference external" href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-theoraenc.html">theoraenc</a> and
 <a class="reference external" href="http://gstreamer.freedesktop.org/data/doc/gstreamer/head/gst-plugins-base-plugins/html/gst-plugins-base-plugins-vorbisenc.html">vorbisenc</a> gstreamer plugins&nbsp;pages.</p>
-<p>To change the framerate, to say 15 frames per&nbsp;second:</p>
+<p>To change the framerate, to say 20 frames per second (default&nbsp;30fps):</p>
 <pre class="code bash literal-block">
-gsettings <span class="nb">set </span>org.gnome.shell.recorder framerate 15
+gsettings <span class="nb">set </span>org.gnome.shell.recorder framerate 20
 </pre>
 <p>To reset the <span class="caps">GNOME</span> recorder to its defaults,&nbsp;run:</p>
 <pre class="code bash literal-block">
 gsettings reset-recursively org.gnome.shell.recorder
 </pre>
+<div class="section" id="slidecasting">
+<h3>Slidecasting</h3>
+<p>For slidecasting, I am currently using the following recorder&nbsp;configuration:</p>
+<pre class="code bash literal-block">
+gsettings <span class="nb">set </span>org.gnome.shell.recorder framerate 15
+gsettings <span class="nb">set </span>org.gnome.shell.recorder file-extension <span class="s2">&quot;ogv&quot;</span>
+gsettings <span class="nb">set </span>org.gnome.shell.recorder pipeline <span class="s2">&quot;queue ! videorate \
+  ! theoraenc quality=20 ! mux. pulsesrc ! audio/x-raw-int,channels=1 \
+  ! audioconvert ! vorbisenc quality=0.5 ! mux. oggmux name=mux&quot;</span>
+</pre>
+<p>And after the recording is finished and stopped, I refresh the Gnome3 shell
+(<tt class="docutils literal">alt+f2</tt>, <tt class="docutils literal">r</tt>, enter) to stop the current pipeline. Otherwise, the next
+recording session might be appended to the existing screencast&nbsp;file.</p>
+</div>
 </div>
 <div class="section" id="capture-system-audio">
 <h2>Capture System&nbsp;Audio</h2>
