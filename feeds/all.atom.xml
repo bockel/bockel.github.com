@@ -1,5 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/usr/share</title><link href="bockel.github.com/" rel="alternate"></link><link href="bockel.github.com/feeds/all.atom.xml" rel="self"></link><id>bockel.github.com/</id><updated>2012-09-24T17:47:00-04:00</updated><entry><title>Gnome3 Screencasting</title><link href="bockel.github.com/random/gnome3-screencasting.html" rel="alternate"></link><updated>2012-09-24T17:47:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-09-24:random/gnome3-screencasting.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Updated 2012-09-26:&lt;/em&gt; Fix the gsettings pipeline commands; add current
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/usr/share</title><link href="bockel.github.com/" rel="alternate"></link><link href="bockel.github.com/feeds/all.atom.xml" rel="self"></link><id>bockel.github.com/</id><updated>2012-10-05T15:36:00-04:00</updated><entry><title>Security Assurance Stack</title><link href="bockel.github.com/security/security-assurance-stack.html" rel="alternate"></link><updated>2012-10-05T15:36:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-10-05:security/security-assurance-stack.html</id><summary type="html">&lt;p&gt;There are many different &amp;#8220;assurance&amp;#8221; terms used to define various parts of the
+network and information&amp;nbsp;stack.&lt;/p&gt;
+&lt;p&gt;For most needs, terms like &amp;#8220;software assurance&amp;#8221; and &amp;#8220;information assurance&amp;#8221;
+suffice. However, I cannot find any place that really compares the two other
+than software assurance is one portion of the more general information&amp;nbsp;assurance.&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;Information&amp;nbsp;Assurance&lt;/dt&gt;
+&lt;dd&gt;practice of assuring information and managing risks related to the use,
+processing, storage, and transmission of information or data and the systems
+and processes used for those purposes [&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Information_assurance"&gt;wikipedia&lt;/a&gt;]&lt;/dd&gt;
+&lt;dt&gt;Software&amp;nbsp;Assurance&lt;/dt&gt;
+&lt;dd&gt;the level of confidence that software functions as intended and is free of
+vulnerabilities, either intentionally or unintentionally designed or inserted
+as part of the software [&lt;a class="reference external" href="https://acc.dau.mil/CommunityBrowser.aspx?id=25749"&gt;DoD&lt;/a&gt;]&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;p&gt;For a component stack, let us start with one like &lt;a class="reference external" href="http://venturebeat.com/2011/11/14/cloud-iaas-paas-saas/"&gt;this&lt;/a&gt; used to compare
+Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS), and
+Software-as-a-Service (SaaS) cloud&amp;nbsp;architectures.&lt;/p&gt;
+&lt;object data="/static/images/component-stack.svg" type="image/svg+xml"&gt;
+Component Stack Model&lt;/object&gt;
+&lt;p&gt;First, let&amp;#8217;s make some simple modifications: flip it over, split &lt;em&gt;application&lt;/em&gt;
+into &lt;em&gt;software&lt;/em&gt; &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt; &lt;em&gt;services&lt;/em&gt; and ad the most important security element &amp;#8212;
+&lt;em&gt;people&lt;/em&gt;. Then we can more specifically visualize the difference between
+information and software (SwA)&amp;nbsp;assurance:&lt;/p&gt;
+&lt;object data="/static/images/swa-ia-stack.svg" type="image/svg+xml"&gt;
+Software and Information Assurance Stack&lt;/object&gt;
+&lt;p&gt;While software assurance is fairly specific, information assurance is much more
+general and allows room for further&amp;nbsp;division.&lt;/p&gt;
+&lt;p&gt;To fill out the remainder of the stack between software and information
+assurance, I propose the following terms and&amp;nbsp;concepts:&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;Platform&amp;nbsp;Assurance&lt;/dt&gt;
+&lt;dd&gt;the confidence that the platform functions as intended and its capabilities
+for managing risk and protecting the operating system platform, middleware,
+runtime, software, and services from exploits. This include protections such
+as stack protections and randomized memory&amp;nbsp;space.&lt;/dd&gt;
+&lt;dt&gt;Infrastructure&amp;nbsp;Assurance&lt;/dt&gt;
+&lt;dd&gt;the confidence that the infrastructure functions as intended and its
+capabilities to mitigate risk and improve the security and reliability of the
+operating platforms. This includes redundancy, failovers, and all hardware
+protection&amp;nbsp;mechanisms.&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;object data="/static/images/assurance-stack.svg" type="image/svg+xml"&gt;
+Security Assurance Stack&lt;/object&gt;
+</summary><category term="swa"></category><category term="ia"></category><category term="assurance"></category></entry><entry><title>Gnome3 Screencasting</title><link href="bockel.github.com/random/gnome3-screencasting.html" rel="alternate"></link><updated>2012-09-24T17:47:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-09-24:random/gnome3-screencasting.html</id><summary type="html">&lt;p&gt;&lt;em&gt;Updated 2012-09-26:&lt;/em&gt; Fix the gsettings pipeline commands; add current
 slidecasting&amp;nbsp;configuration&lt;/p&gt;
 &lt;p&gt;Continuing on a little mini-series of slide- and screen-casting notes (post &lt;a class="reference external" href="http://bockel.github.com/random/converting-presentation-to-video.html"&gt;1&lt;/a&gt;, &lt;a class="reference external" href="http://bockel.github.com/random/slidecasting-v2.html"&gt;2&lt;/a&gt;) here is an overview
 of the screencast recorder built into&amp;nbsp;&lt;span class="caps"&gt;GNOME3&lt;/span&gt;.&lt;/p&gt;

@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    
+    <link href="bockel.github.com/" type="application/atom+xml" rel="alternate" title="/usr<wbr/>/share ATOM Feed" />
+    
+
+    
+    <title>/usr/share/security/security-assurance-stack.html</title>
+        <meta charset="utf-8" />
+    
+    
+<link href="/theme/css/colorbox.css" type="text/css" rel="stylesheet"/>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
+<script src="/theme/js/jquery.colorbox-min.js" type="text/javascript"></script>
+
+<script src="/theme/js/svg-colorbox.min.js" type="text/javascript"></script>
+
+
+</head>
+<body>
+    <section id="sidebar">
+        <div class="sitename"> <a href="/">/usr<wbr/>/share</a></div>
+        
+
+        <div class="user_meta">
+            <h1 id="user"><a href="/" class="">William Heinbockel</a></h1>
+            <h2>Bringing Security to Open Source</h2>
+            <ul>
+                
+                
+                    
+                
+                
+                    <li><a href="http://securityblog.redhat.com">Red Hat Security</a></li>
+                
+                    <li><a href="http://redhat.com">Red Hat</a></li>
+                
+                    <li><a href="http://github.com/bockel">GitHub</a></li>
+                
+            </ul>
+        </div>
+        <footer>
+            <address>
+                Powered by <a href="http://pelican.notmyidea.org/">Pelican</a>,
+                theme by <a href="https://github.com/wting/pelican-svbtle">wting</a>.
+            </address>
+        </footer>
+    </section>
+        
+
+        <section id="content">
+        
+    <article id="blog">
+    
+
+<meta name="title" property="og:title" content="Security Assurance Stack" />
+<!-- <meta name="description" property="og:description" content="" /> -->
+
+<meta name="author" content="William Heinbockel" />
+
+<meta name="revised" content="2012-10-05T15:36:00-05:00" />
+
+
+<header>
+
+    <h1>Security Assurance&nbsp;Stack</h1>
+    <div class="item-list">
+        <div class="item"><label>file:</label>
+            <a class="item-file" href=".././security/security-assurance-stack.html" rel="bookmark"
+                title="Permalink to Security Assurance Stack">security/security-assurance-stack.html</a></div>
+
+        <div class="item"><label>author:</label>William Heinbockel</div>
+
+        <div class="item"><label>published:</label> 2012-10-05T15:36:00-05:00</div>
+
+        <div class="item"><label>updated:</label> 2012-10-05T17:26:09-05:00</div>
+
+    </div>
+
+</header>
+    <p>There are many different &#8220;assurance&#8221; terms used to define various parts of the
+network and information&nbsp;stack.</p>
+<p>For most needs, terms like &#8220;software assurance&#8221; and &#8220;information assurance&#8221;
+suffice. However, I cannot find any place that really compares the two other
+than software assurance is one portion of the more general information&nbsp;assurance.</p>
+<dl class="docutils">
+<dt>Information&nbsp;Assurance</dt>
+<dd>practice of assuring information and managing risks related to the use,
+processing, storage, and transmission of information or data and the systems
+and processes used for those purposes [<a class="reference external" href="https://en.wikipedia.org/wiki/Information_assurance">wikipedia</a>]</dd>
+<dt>Software&nbsp;Assurance</dt>
+<dd>the level of confidence that software functions as intended and is free of
+vulnerabilities, either intentionally or unintentionally designed or inserted
+as part of the software [<a class="reference external" href="https://acc.dau.mil/CommunityBrowser.aspx?id=25749">DoD</a>]</dd>
+</dl>
+<p>For a component stack, let us start with one like <a class="reference external" href="http://venturebeat.com/2011/11/14/cloud-iaas-paas-saas/">this</a> used to compare
+Infrastructure-as-a-Service (IaaS), Platform-as-a-Service (PaaS), and
+Software-as-a-Service (SaaS) cloud&nbsp;architectures.</p>
+<object data="/static/images/component-stack.svg" type="image/svg+xml">
+Component Stack Model</object>
+<p>First, let&#8217;s make some simple modifications: flip it over, split <em>application</em>
+into <em>software</em> <span class="amp">&amp;</span> <em>services</em> and ad the most important security element &#8212;
+<em>people</em>. Then we can more specifically visualize the difference between
+information and software (SwA)&nbsp;assurance:</p>
+<object data="/static/images/swa-ia-stack.svg" type="image/svg+xml">
+Software and Information Assurance Stack</object>
+<p>While software assurance is fairly specific, information assurance is much more
+general and allows room for further&nbsp;division.</p>
+<p>To fill out the remainder of the stack between software and information
+assurance, I propose the following terms and&nbsp;concepts:</p>
+<dl class="docutils">
+<dt>Platform&nbsp;Assurance</dt>
+<dd>the confidence that the platform functions as intended and its capabilities
+for managing risk and protecting the operating system platform, middleware,
+runtime, software, and services from exploits. This include protections such
+as stack protections and randomized memory&nbsp;space.</dd>
+<dt>Infrastructure&nbsp;Assurance</dt>
+<dd>the confidence that the infrastructure functions as intended and its
+capabilities to mitigate risk and improve the security and reliability of the
+operating platforms. This includes redundancy, failovers, and all hardware
+protection&nbsp;mechanisms.</dd>
+</dl>
+<object data="/static/images/assurance-stack.svg" type="image/svg+xml">
+Security Assurance Stack</object>
+
+
+    <footer>
+    <div id="article_meta">
+        
+            Category:
+            <a href=".././security/">/usr<wbr/>/share/security</a>
+        
+        
+            <br />Tags:
+            
+                <a href=".././tag/swa.html">swa</a>
+            
+                <a href=".././tag/ia.html">ia</a>
+            
+                <a href=".././tag/assurance.html">assurance</a>
+            
+        
+    </div>
+
+    
+    </footer>
+    </article>
+
+    
+    <div id="comments">
+        <h3>Discussion</h3>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_identifier = "security/security-assurance-stack.html";
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://usr-share.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view <a href="http://disqus.com/?ref_noscript">comments</a>.</noscript>
+    </div>
+    
+
+
+        <div class="footer">
+            <div id="copyright">
+                <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="/theme/img/cc88x31.png" /></a><br />Except where otherise noted, content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a></div>
+            <p id="disclosure">All information contained within this blog is my
+            own opinion and is not intended to constitute advice or technical
+            support. The content is not represented of, or affliated with my
+            current or previous employers.</p>
+        </div>
+        </section>
+
+
+    
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-34392261-1");
+			pageTracker._trackPageview();
+		} catch(err) {}</script>
+
+</body>
+</html>
