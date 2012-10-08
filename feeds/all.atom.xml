@@ -1,5 +1,100 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/usr/share</title><link href="bockel.github.com/" rel="alternate"></link><link href="bockel.github.com/feeds/all.atom.xml" rel="self"></link><id>bockel.github.com/</id><updated>2012-10-05T15:36:00-04:00</updated><entry><title>Security Assurance Stack</title><link href="bockel.github.com/security/security-assurance-stack.html" rel="alternate"></link><updated>2012-10-05T15:36:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-10-05:security/security-assurance-stack.html</id><summary type="html">&lt;p&gt;There are many different &amp;#8220;assurance&amp;#8221; terms used to define various parts of the
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/share</title><link href="bockel.github.com/" rel="alternate"></link><link href="bockel.github.com/feeds/all.atom.xml" rel="self"></link><id>bockel.github.com/</id><updated>2012-10-08T16:15:00-04:00</updated><entry><title>Agile Standards</title><link href="bockel.github.com/standards/agile-standards.html" rel="alternate"></link><updated>2012-10-08T16:15:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-10-08:standards/agile-standards.html</id><summary type="html">&lt;p&gt;With rapid development and deployment cycles, software developers cannot
+wait on the long cycles needed for most standards bodies. In the case of
+internationally recognized standards bodies such as &lt;span class="caps"&gt;IETF&lt;/span&gt;, &lt;span class="caps"&gt;W3C&lt;/span&gt;, and &lt;span class="caps"&gt;ISO&lt;/span&gt;,
+the time need to take a standard from proposal to adoption is measured
+in &lt;strong&gt;years&lt;/strong&gt;!&lt;/p&gt;
+&lt;p&gt;With many high profile projects and Linux distributions relying on a
+more agile, rolling release model, there is simply not the time to wait
+on standards to be finalized to release updates to&amp;nbsp;customers.&lt;/p&gt;
+&lt;p&gt;This is the basis for a growing need for more agile standarization
+frameworks that allow for organizations to rapidly innovate while still
+recognizing the benefits of international&amp;nbsp;standards.&lt;/p&gt;
+&lt;p&gt;The solution to this need will come from agile standards &amp;#8212; the
+combination of open source software to rapidly develop and drive&amp;nbsp;standards.&lt;/p&gt;
+&lt;div class="section" id="open-source-standards"&gt;
+&lt;h2&gt;Open Source &lt;span class="amp"&gt;&amp;amp;&lt;/span&gt;&amp;nbsp;Standards&lt;/h2&gt;
+&lt;p&gt;The synthesis of open source with standards is obvious. Both rely
+on open development models that require transparency and encourage
+community&amp;nbsp;participation.&lt;/p&gt;
+&lt;p&gt;In his article, &lt;a class="reference external" href="http://blogs.adobe.com/open/impact-imminent-open-source-and-standards/"&gt;Impact Imminent: Open Source and Standards&lt;/a&gt;,
+Adobe&amp;#8217;s Dave McAllister reaches a similar conclusion. He notes that the
+development of many web standards including &lt;span class="caps"&gt;HTML5&lt;/span&gt;, &lt;span class="caps"&gt;CSS&lt;/span&gt;, and ECMAscript
+are all driven by open source&amp;nbsp;projects.&lt;/p&gt;
+&lt;p&gt;However, open source does not a standard make. Based on my experience
+with standards and standards organizations, there are several
+recommendations for agile standard&amp;nbsp;development:&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;&lt;a class="reference internal" href="#identify-the-what-how-and-who"&gt;1. Identify the What, How and&amp;nbsp;Who&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;Define the standard space. The more specific the more likely it is
+you will&amp;nbsp;succeed&lt;/dd&gt;
+&lt;dt&gt;&lt;a class="reference internal" href="#build-the-minimal-viable-framework"&gt;2. Build the Minimal Viable&amp;nbsp;Framework&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;Focus on developing the minimal viable requirements for the&amp;nbsp;standard&lt;/dd&gt;
+&lt;dt&gt;&lt;a class="reference internal" href="#open-source-the-development"&gt;3. Open Source the&amp;nbsp;Development&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;Do the development in the open and under commercial-friendly&amp;nbsp;license&lt;/dd&gt;
+&lt;dt&gt;&lt;a class="reference internal" href="#do-not-get-ahead-of-yourself"&gt;4. Do Not Get Ahead of&amp;nbsp;Yourself&lt;/a&gt;&lt;/dt&gt;
+&lt;dd&gt;Do not allow yourself or the standard to get sidetracked too&amp;nbsp;early&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;div class="section" id="identify-the-what-how-and-who"&gt;
+&lt;h3&gt;1. Identify the What, How and&amp;nbsp;Who&lt;/h3&gt;
+&lt;p&gt;The main goal for any standard must be adoption. In order to get
+adoption, you must have a clear understanding of the &amp;#8220;what, how and
+who&amp;#8221; for your&amp;nbsp;standard:&lt;/p&gt;
+&lt;ul class="simple"&gt;
+&lt;li&gt;&lt;strong&gt;What&lt;/strong&gt; are you trying to&amp;nbsp;standardize?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;How&lt;/strong&gt; will you standardize it and evaluate&amp;nbsp;compliance?&lt;/li&gt;
+&lt;li&gt;&lt;strong&gt;Who&lt;/strong&gt; is the target community that will use the&amp;nbsp;standard?&lt;/li&gt;
+&lt;/ul&gt;
+&lt;p&gt;When answering these questions, be as specific and constraining as
+possible. The more restricted your answers, the more aware you are about
+your potential adopters and the more likely you are to&amp;nbsp;succeed.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="build-the-minimal-viable-framework"&gt;
+&lt;h3&gt;2. Build the Minimal Viable&amp;nbsp;Framework&lt;/h3&gt;
+&lt;p&gt;Do not get wrapped up in the details and possibilities. First flush out
+the minimal set of requirements necessary for your standard to be
+successful. In &lt;span class="caps"&gt;HTML&lt;/span&gt;, this was the need for a communication protocol
+(&lt;span class="caps"&gt;HTTP&lt;/span&gt;) and some markup language that could be rendered to the&amp;nbsp;user.&lt;/p&gt;
+&lt;p&gt;This framework should be flexible enough to handle your problem space
+but flexible enough to allow vendors to experiment with your standard
+without breaking other&amp;nbsp;implementations.&lt;/p&gt;
+&lt;p&gt;One example is &lt;span class="caps"&gt;CSS&lt;/span&gt;. While &lt;span class="caps"&gt;CSS&lt;/span&gt; defines the format of &lt;span class="caps"&gt;CSS&lt;/span&gt; rules and
+provides some attributes, it still allows for vendors to implement their
+own formatting extensions as long as the name begins with a &lt;tt class="docutils literal"&gt;-&lt;/tt&gt;
+hyphen. To allow for compatibility without breakage, when interpretting
+&lt;span class="caps"&gt;CSS&lt;/span&gt; rules, implementations are permitted to ignore any attribute
+starting with a &lt;tt class="docutils literal"&gt;-&lt;/tt&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="open-source-the-development"&gt;
+&lt;h3&gt;3. Open Source the&amp;nbsp;Development&lt;/h3&gt;
+&lt;p&gt;Open source all of your standard development. This not only allows for
+potential users to see the code and how the standard might function, it
+allows for people to start actively experimenting with implementation
+options and provide&amp;nbsp;feedback.&lt;/p&gt;
+&lt;p&gt;To allow for maximal user traction and allow for this standard
+baselining code to be used in products, be sure to license the code
+under a commercial-friendly open source license, such as &lt;a class="reference external" href="http://www.apache.org/licenses/LICENSE-2.0.html"&gt;Apache
+License, Version 2.0&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="do-not-get-ahead-of-yourself"&gt;
+&lt;h3&gt;4. Do Not Get Ahead of&amp;nbsp;Yourself&lt;/h3&gt;
+&lt;p&gt;Do not be afraid to say&amp;nbsp;&amp;#8220;no&amp;#8221;.&lt;/p&gt;
+&lt;p&gt;Focus on getting the foundation correct. Do not worry about what could
+be done and never let the standard or community get distracted with
+feature creep. If it is not covered by a &amp;#8220;what, how and who&amp;#8221; answer, it
+is out of scope. Ignore suggestions and comments that do not help with
+implementing the minimal viable implementation of the&amp;nbsp;standard.&lt;/p&gt;
+&lt;p&gt;Too many standards never become standards because they get bogged down
+with being everything to everyone instead of meeting their initial needs
+first; you will never be able to make everyone happy. Once you have a
+standard, you can always add&amp;nbsp;features.&lt;/p&gt;
+&lt;p&gt;I know this one from first hand experience trying to get the log
+standard &lt;a class="reference external" href="http://cee.mitre.org"&gt;&lt;span class="caps"&gt;CEE&lt;/span&gt;&lt;/a&gt; off of the ground. There is too much focus on solving all
+of the logging problems instead of first focusing on a standardized log
+record format and implementation&amp;nbsp;thereof.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+</summary><category term="agile"></category><category term="standards"></category></entry><entry><title>Security Assurance Stack</title><link href="bockel.github.com/security/security-assurance-stack.html" rel="alternate"></link><updated>2012-10-05T15:36:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-10-05:security/security-assurance-stack.html</id><summary type="html">&lt;p&gt;There are many different &amp;#8220;assurance&amp;#8221; terms used to define various parts of the
 network and information&amp;nbsp;stack.&lt;/p&gt;
 &lt;p&gt;For most needs, terms like &amp;#8220;software assurance&amp;#8221; and &amp;#8220;information assurance&amp;#8221;
 suffice. However, I cannot find any place that really compares the two other
