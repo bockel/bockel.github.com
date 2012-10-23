@@ -1,5 +1,86 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/share</title><link href="bockel.github.com/" rel="alternate"></link><link href="bockel.github.com/feeds/security.atom.xml" rel="self"></link><id>bockel.github.com/</id><updated>2012-10-05T15:36:00-04:00</updated><entry><title>Security Assurance Stack</title><link href="bockel.github.com/security/security-assurance-stack.html" rel="alternate"></link><updated>2012-10-05T15:36:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-10-05:security/security-assurance-stack.html</id><summary type="html">&lt;p&gt;There are many different &amp;#8220;assurance&amp;#8221; terms used to define various parts of the
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/share</title><link href="bockel.github.com/" rel="alternate"></link><link href="bockel.github.com/feeds/security.atom.xml" rel="self"></link><id>bockel.github.com/</id><updated>2012-10-23T11:51:00-04:00</updated><entry><title>Security Mentality</title><link href="bockel.github.com/security/security-mentality.html" rel="alternate"></link><updated>2012-10-23T11:51:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-10-23:security/security-mentality.html</id><summary type="html">&lt;p&gt;From the security perspective, we need developers and engineers to
+&amp;#8220;think more securely&amp;#8221;. However, this is easier said than done. We need
+to first address several important&amp;nbsp;issues:&lt;/p&gt;
+&lt;ol class="arabic simple"&gt;
+&lt;li&gt;What does &amp;#8220;think security&amp;#8221; mean and how does one use&amp;nbsp;it?&lt;/li&gt;
+&lt;li&gt;How can the concepts of &amp;#8220;think security&amp;#8221; be distilled and&amp;nbsp;taught?&lt;/li&gt;
+&lt;/ol&gt;
+&lt;div class="section" id="explaining-the-security-mentality"&gt;
+&lt;h2&gt;Explaining the Security&amp;nbsp;Mentality&lt;/h2&gt;
+&lt;p&gt;I am only starting to examine the first&amp;nbsp;issue:&lt;/p&gt;
+&lt;blockquote&gt;
+What is it about the mindset of a security professional that
+distinguishes them from developers and other professions?&lt;/blockquote&gt;
+&lt;p&gt;Maybe a good place to start is looking at other methods of thought, such
+as &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Critical_thinking"&gt;critical thinking&lt;/a&gt; or the &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Socratic_method"&gt;Socratic method&lt;/a&gt;. One well-known modern
+teacher of thought, &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Edward_de_Bono"&gt;Edward de Bono&lt;/a&gt;, breaks the thought space into
+three general types of&amp;nbsp;thinkers:&lt;/p&gt;
+&lt;dl class="docutils"&gt;
+&lt;dt&gt;Horizontal&amp;nbsp;Thinkers:&lt;/dt&gt;
+&lt;dd&gt;Creative thinkers that focus more on abstract ideas and fantasy,
+including artists and&amp;nbsp;designers&lt;/dd&gt;
+&lt;dt&gt;Vertical&amp;nbsp;Thinkers&lt;/dt&gt;
+&lt;dd&gt;Critical thinkers that use deductive reasoning to solve problems,
+such as engineers and software&amp;nbsp;developers&lt;/dd&gt;
+&lt;dt&gt;Lateral&amp;nbsp;Thinkers&lt;/dt&gt;
+&lt;dd&gt;&lt;p class="first"&gt;&lt;span class="dquo"&gt;&amp;#8220;&lt;/span&gt;Sideways thinkers&amp;#8221; who use more creative problem solving techniques
+and are capable of freeing their thoughts from common thought biases
+and&amp;nbsp;assumptions&lt;/p&gt;
+&lt;p class="last"&gt;Lateral thinkers can be thought of as a combination of both
+horizontal and vertical&amp;nbsp;thinkers&lt;/p&gt;
+&lt;/dd&gt;
+&lt;/dl&gt;
+&lt;object data="/static/images/lateral-thinking.svg" type="image/svg+xml"&gt;
+Planes of Thought&lt;/object&gt;
+&lt;p&gt;de Bono&amp;#8217;s portrayal of &lt;em&gt;lateral thinkers&lt;/em&gt; has many similarities to
+common traits of security professionals &amp;#8212; they are capable of
+approaching problems in innovative ways to find new security&amp;nbsp;weaknesses.&lt;/p&gt;
+&lt;div class="section" id="lateral-thinking-puzzles"&gt;
+&lt;h3&gt;Lateral Thinking&amp;nbsp;Puzzles&lt;/h3&gt;
+&lt;p&gt;Examples of lateral thinking are best highlighted in lateral thinking,
+or scenario, puzzles. In these puzzles, you are presented with a
+situation and you must find a solution for under which circumstances the
+situation can be reasonably&amp;nbsp;explained.&lt;/p&gt;
+&lt;p&gt;The trick to these puzzles is that there is no deducible solution to the
+problem. That is, the solution cannot be reached using only the
+information and assumptions based on the&amp;nbsp;puzzle.&lt;/p&gt;
+&lt;p&gt;Here is a common example of a lateral thinking&amp;nbsp;puzzle:&lt;/p&gt;
+&lt;div class="line-block"&gt;
+&lt;div class="line"&gt;A man walks into a bar and asks for a drink.&lt;/div&gt;
+&lt;div class="line"&gt;The bartender pulls out a gun and points it at him.&lt;/div&gt;
+&lt;div class="line"&gt;The man says, &amp;#8220;Thank you,&amp;#8221; and walks out.&lt;/div&gt;
+&lt;/div&gt;
+&lt;p&gt;For the answer to this problem as well as other lateral thinking
+puzzles, visit &lt;a class="reference external" href="http://www.rinkworks.com/brainfood/p/latreal1.shtml"&gt;Brain Food&lt;/a&gt;.&lt;/p&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div class="section" id="schneier-s-law"&gt;
+&lt;h2&gt;Schneier&amp;#8217;s&amp;nbsp;Law&lt;/h2&gt;
+&lt;p&gt;No discussion of the security mentality can be complete without a
+mention of &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Schneier%27s_law#Cryptography"&gt;Schneier&amp;#8217;s Law&lt;/a&gt;. While initially posed in relation to
+cryptography, it is equally applicable to the general problem addressed
+by the security&amp;nbsp;mentality:&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;Any person can invent a security system so clever that he or she
+can&amp;#8217;t imagine a way of breaking&amp;nbsp;it.&lt;/p&gt;
+&lt;p class="attribution"&gt;&amp;mdash;Schneier&amp;#8217;s Law (as coined by Cory&amp;nbsp;Doctorow)&lt;/p&gt;
+&lt;/blockquote&gt;
+&lt;p&gt;The advice is that security should be done in teams and made available
+for peer review. This is because individuals are incapable of
+considering every possible security threat; they are further constrained
+by their assumptions and&amp;nbsp;biases.&lt;/p&gt;
+&lt;p&gt;&lt;a class="reference external" href="https://en.wikipedia.org/wiki/Edward_de_Bono"&gt;Edward de Bono&lt;/a&gt; at least partially addresses this problem in what he
+calls &lt;a class="reference external" href="https://en.wikipedia.org/wiki/Parallel_thinking"&gt;parallel thinking&lt;/a&gt;. Parallel thinking can be viewed as an
+extension to lateral thinking where the thinking process is performed as
+a group and focuses on exploring&amp;nbsp;possibilities.&lt;/p&gt;
+&lt;p&gt;The next step is to start exploring some of these common biases that
+lead to vulnerabilities. My hope is that if we can understand &lt;strong&gt;why&lt;/strong&gt;
+developers make security mistakes (besides pure negligence), we should
+be able to adapt our approaches to software assurance and education to
+minimize security&amp;nbsp;risk.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="swa"></category><category term="ia"></category><category term="assurance"></category></entry><entry><title>Security Assurance Stack</title><link href="bockel.github.com/security/security-assurance-stack.html" rel="alternate"></link><updated>2012-10-05T15:36:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-10-05:security/security-assurance-stack.html</id><summary type="html">&lt;p&gt;There are many different &amp;#8220;assurance&amp;#8221; terms used to define various parts of the
 network and information&amp;nbsp;stack.&lt;/p&gt;
 &lt;p&gt;For most needs, terms like &amp;#8220;software assurance&amp;#8221; and &amp;#8220;information assurance&amp;#8221;
 suffice. However, I cannot find any place that really compares the two other

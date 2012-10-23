@@ -76,55 +76,61 @@
 
         <div class="item"><label>published:</label> 2012-08-22T17:20:00-05:00</div>
 
-        <div class="item"><label>updated:</label> 2012-10-05T17:27:16-05:00</div>
+        <div class="item"><label>updated:</label> 2012-10-23T09:06:40-05:00</div>
 
     </div>
 
 </header>
-    <p>As part of my job, I develop training courses to help teach developers about
-software security. This results in lots of tips, articles, and slide decks.
-While articles and tips are standalone, slides require further explaination.
-Slides should never be made to be independent; otherwise, you end up with
-walls of text and glazed-over, uninterested&nbsp;audiences.</p>
-<p>To make the slide content standalone, it needs to be combined with an audio
-voiceover track. Producing the slides and the audio presentation are
-straightforward, but combining them into a video was anything&nbsp;but.</p>
+    <p><em>Updated 2012-10-23:</em> Experiments show that using <span class="caps">MP4</span> instead of Ogg/<span class="caps">OGV</span>
+yields to a better quality in video and audio with a reduced file size.
+View my current <tt class="docutils literal">pdf2mp4</tt> script in <a class="reference external" href="https://github.com/bockel/install-files/blob/master/bin/pdf2mp4">my GitHub repo</a>.</p>
+<p>As part of my job, I develop training courses to help teach developers
+about software security. This results in lots of tips, articles, and
+slide decks. While articles and tips are standalone, slides require
+further explaination. Slides should never be made to be independent;
+otherwise, you end up with walls of text and glazed-over, uninterested&nbsp;audiences.</p>
+<p>To make the slide content standalone, it needs to be combined with an
+audio voiceover track. Producing the slides and the audio presentation
+are straightforward, but combining them into a video was anything&nbsp;but.</p>
 <p>Searching through the interwebs and forums yielded little promise. Most
-solutions were either commercial products, were missing essential features, or
-would require a lot of customization. Screencasting was not a solution as it
-would require me to play the audio and manually traverse the&nbsp;slides.</p>
+solutions were either commercial products, were missing essential
+features, or would require a lot of customization. Screencasting was not
+a solution as it would require me to play the audio and manually
+traverse the&nbsp;slides.</p>
 <p>Each presentation&nbsp;contains:</p>
 <ul class="simple">
 <li>An OpenDocument Presentation (.odp) file from&nbsp;LibreOffice</li>
 <li><a class="reference external" href="http://audacity.sourceforge.net/">audacity</a> project file (.aup) with audio recorded as one track per&nbsp;slide</li>
 </ul>
-<p>Here is my solution, <tt class="docutils literal">pdf2ogv</tt>&#8212;a program that combines a <span class="caps">PDF</span> slide deck
-with an audio track to produce an Ogg <span class="caps">OGV</span> video container with <a class="reference external" href="http://speex.org/">speex</a>-encoded&nbsp;audio.</p>
+<p>Here is my solution, <tt class="docutils literal">pdf2ogv</tt>&#8212;a program that combines a <span class="caps">PDF</span> slide
+deck with an audio track to produce an Ogg <span class="caps">OGV</span> video container with
+<a class="reference external" href="http://speex.org/">speex</a>-encoded&nbsp;audio.</p>
 <div class="section" id="instructions">
 <h2><span class="caps">INSTRUCTIONS</span></h2>
 <ol class="arabic">
-<li><p class="first">Create (or open) a presentation slide deck. Save the deck as <span class="caps">PDF</span> with one
-slide per&nbsp;page</p>
+<li><p class="first">Create (or open) a presentation slide deck. Save the deck as <span class="caps">PDF</span> with
+one slide per&nbsp;page</p>
 <ul class="simple">
-<li>For OpenDocument (.odp) or Microsoft PowerPoint presentations, this can be
-done via <em>File &gt; Save As</em> or <em>File &gt;&nbsp;Export</em></li>
+<li>For OpenDocument (.odp) or Microsoft PowerPoint presentations, this
+can be done via <em>File &gt; Save As</em> or <em>File &gt;&nbsp;Export</em></li>
 <li>For <span class="caps">HTML</span> presentations, you can use something like <a class="reference external" href="http://phantomjs.org/">phantomjs</a> to automatically capture each slide as an&nbsp;image</li>
 </ul>
 </li>
 <li><p class="first">Record (or open) the presentation audio track in <tt class="docutils literal">audacity</tt></p>
 <ul class="simple">
-<li>The audio for each slide is on a different track and that the tracks to
-not&nbsp;overlap</li>
+<li>The audio for each slide is on a different track and that the
+tracks to not&nbsp;overlap</li>
 <li>Sync-Lock the tracks ( <em>Tracks &gt; Sync-Lock Tracks</em>&nbsp;)</li>
-<li>Add 1+ seconds of lead-in time (either as silence or music) to the first&nbsp;track</li>
+<li>Add 1+ seconds of lead-in time (either as silence or music) to the
+first&nbsp;track</li>
 <li>Add 1+ seconds of lead-out time to the final&nbsp;track</li>
 </ul>
 </li>
 <li><p class="first">Save the recording as an <tt class="docutils literal">audacity</tt> project</p>
 </li>
-<li><p class="first">Export the audio to a single <tt class="docutils literal">wav</tt> file ( <em>File &gt; Export&#8230;</em> ) (This step
-is necessary as there is no easy way to convert the audacity .au files into
-a single&nbsp;wav)</p>
+<li><p class="first">Export the audio to a single <tt class="docutils literal">wav</tt> file ( <em>File &gt; Export&#8230;</em> )
+(This step is necessary as there is no easy way to convert the
+audacity .au files into a single&nbsp;wav)</p>
 </li>
 <li><p class="first">Run <tt class="docutils literal">pdf2ogv</tt> as&nbsp;follows:</p>
 <pre class="literal-block">
@@ -144,15 +150,17 @@ sudo rpm -ivh http://download1.rpmfusion.org/free/fedora/rpmfusion-free-release-
 sudo yum update
 sudo yum install ffmpeg
 </pre>
-<p>The remaining files are available from the Fedora repository via <tt class="docutils literal">yum</tt>:</p>
+<p>The remaining files are available from the Fedora repository via
+<tt class="docutils literal">yum</tt>:</p>
 <pre class="literal-block">
 sudo yum install -y sox audacity libxslt imagemagick
 </pre>
 </div>
 <div class="section" id="pdf2ogv">
 <h2>pdf2ogv</h2>
-<p>The <tt class="docutils literal">pdf2ogv</tt> code is made available under the <a class="reference external" href="http://www.gnu.org/licenses/gpl.html">GPLv3 license</a>
-and is available as a <a class="reference external" href="https://gist.github.com/3426432">gist</a>.</p>
+<p><strong>Note:</strong> An <span class="caps">MP4</span> video seems to give a better quality/size ratio. See my
+<a class="reference external" href="https://github.com/bockel/install-files/blob/master/bin/pdf2mp4">pdf2mp4</a>&nbsp;script.</p>
+<p>The <tt class="docutils literal">pdf2ogv</tt> code is made available under the <a class="reference external" href="http://www.gnu.org/licenses/gpl.html">GPLv3 license</a> and is available as a <a class="reference external" href="https://gist.github.com/3426432">gist</a>.</p>
 <script src="https://gist.github.com/3426432.js?file=pdf2ogv.sh"></script></div>
 
 

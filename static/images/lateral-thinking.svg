@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg2" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" style="enable-background:new" xmlns="http://www.w3.org/2000/svg" height="665.28" width="673.79" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<defs id="defs4">
+<radialGradient id="radialGradient4686" gradientUnits="userSpaceOnUse" cy="236.17" cx="170.45" gradientTransform="matrix(-1.9779 .00012679 0 -.76953 663.35 750.78)" r="127.5">
+<stop id="stop4682" stop-color="#dc9f2e" offset="0"/>
+<stop id="stop4688" stop-color="#dc9f2e" stop-opacity=".66667" offset=".71831"/>
+<stop id="stop4684" stop-color="#dc9f2e" stop-opacity="0" offset="1"/>
+</radialGradient>
+<radialGradient id="radialGradient4709" gradientUnits="userSpaceOnUse" cy="951.41" cx="304.56" gradientTransform="matrix(0,-0.81214,1.9243,8.3286e-6,-2212,384.04)" r="127.5">
+<stop id="stop4732" stop-color="#74529f" offset="0"/>
+<stop id="stop4734" stop-color="#74529f" stop-opacity=".66667" offset=".66729"/>
+<stop id="stop4736" stop-color="#74529f" stop-opacity="0" offset="1"/>
+</radialGradient>
+</defs>
+<metadata id="metadata7">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<g id="layer1" transform="matrix(2.4315 0 0 2.4315 -182.62 -858.35)">
+<rect id="rect4678" height="150" width="260" y="460.87" x="92.212" fill="url(#radialGradient4686)"/>
+<rect id="rect4678-4" transform="rotate(-90)" height="150" width="257.86" y="92.927" x="-610.87" fill="url(#radialGradient4709)"/>
+<g id="g3997">
+<path id="path2985" style="block-progression:tb;color:#000000;enable-background:accumulate;text-transform:none;text-indent:0" d="m91.594 355.41v256.78h2.5v-256.78h-2.5z"/>
+<path id="path4003" stroke-linejoin="round" stroke-width=".625" fill-rule="evenodd" d="m86.807 369.73 6.0266-16.389 6.0266 16.389c-3.5581-2.6182-8.4262-2.6032-12.053 0z"/>
+</g>
+<g id="g3989" transform="matrix(1.0055 0 0 1 -.51486 0)">
+<path id="path2985-4" style="block-progression:tb;color:#000000;enable-background:accumulate;text-transform:none;text-indent:0" d="m92.844 609.69v2.5h254.31v-2.5h-254.31z"/>
+<path id="path3995" stroke-linejoin="round" stroke-width=".625" fill-rule="evenodd" d="m334.06 604.88 16.389 6.0266-16.389 6.0266c2.6182-3.5581 2.6032-8.4262 0-12.053z"/>
+</g>
+<text id="text4005" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" font-size="40px" line-height="125%" y="626.36218" x="241.71428" font-family="Overpass" fill="#000000"><tspan id="tspan4007" y="626.36218" x="241.71428" font-size="18px" font-family="Sans">horizontal</tspan></text>
+<flowRoot id="flowRoot4009" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" font-size="40px" line-height="125%" font-family="Sans" fill="#000000"><flowRegion id="flowRegion4011"><rect id="rect4013" y="703.08" width="122.14" x="150.71" height="46.429"/></flowRegion><flowPara id="flowPara4015"/></flowRoot>
+<text id="text4017" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" font-size="40px" line-height="125%" y="595.21936" x="443.57144" font-family="Nimbus Roman No9 L" fill="#000000"><tspan id="tspan4019" y="595.21936" x="443.57144"/></text>
+<text id="text4021" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" font-size="40px" line-height="125%" y="325.21933" x="310.71429" font-family="Nimbus Roman No9 L" fill="#000000"><tspan id="tspan4023" y="325.21933" x="310.71429"/></text>
+<text id="text4025" style="word-spacing:0px;letter-spacing:0px" line-height="125%" xml:space="preserve" font-size="40px" transform="rotate(-90)" y="88.782928" x="-437.24893" font-family="Overpass" fill="#000000"><tspan id="tspan4027" font-size="18px" rotate="0 0 0 0 0 0 0 0 0" y="88.782928" x="-437.24893" font-family="Sans">vertical</tspan></text>
+<text id="text4035" style="word-spacing:0px;letter-spacing:0px" line-height="125%" xml:space="preserve" font-size="40px" transform="rotate(-90)" y="151.73199" x="-449.81931" font-family="Overpass" fill="#000000"><tspan id="tspan4037" y="151.73199" x="-449.81931" font-size="24px" font-family="Sans">critical</tspan></text>
+<text id="text4035-4" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" font-size="40px" line-height="125%" y="562.53003" x="243.40723" font-family="Overpass" fill="#000000"><tspan id="tspan4037-4" y="562.53003" x="243.40723" font-size="24px" font-family="Sans">creative</tspan></text>
+</g>
+<g id="g3806" transform="matrix(2.4315 0 0 2.4315 -182.62 -858.35)">
+<flowRoot id="flowRoot3824" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" font-size="40px" line-height="125%" font-family="Sans" fill="#000000"><flowRegion id="flowRegion3826"><rect id="rect3828" y="703.08" x="150.71" width="122.14" height="46.429"/></flowRegion><flowPara id="flowPara3830"/></flowRoot>
+<text id="text3832" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" font-size="40px" line-height="125%" y="595.21936" x="443.57144" font-family="Nimbus Roman No9 L" fill="#000000"><tspan id="tspan3834" y="595.21936" x="443.57144"/></text>
+<text id="text3836" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" font-size="40px" line-height="125%" y="325.21933" x="310.71429" font-family="Nimbus Roman No9 L" fill="#000000"><tspan id="tspan3838" y="325.21933" x="310.71429"/></text>
+<text id="text3862" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" font-size="40px" line-height="125%" y="386.64789" x="255" font-family="Overpass" fill="#000000"><tspan id="tspan3864" font-size="18px" y="386.64789" x="255" font-family="Sans" fill="#000000">lateral</tspan></text>
+<g id="g3041">
+<path id="path3921" style="block-progression:tb;color:#000000;enable-background:accumulate;text-transform:none;text-indent:0" d="m332.38 368.91 1.7812 1.7812 0.65625-0.65625-1.7812-1.7812zm-3.5312 3.5625 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.54 3.53 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.53 3.53 1.75 1.78 1.78-1.78-1.78-1.78zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5625 3.5625 1.7812 1.75 1.7812-1.75-1.7812-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5625 3.5312 1.7812 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5625 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5625 3.5312 1.7812 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5625 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.78-1.75zm-3.56 3.56 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5625 3.5312 1.7812 1.7812 1.7812-1.7812-1.7812-1.75zm-3.54 3.57 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.7812 1.75-1.7812-1.75-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5625 3.5312 1.7812 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5625 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5625 3.5312 1.7812 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5625 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5625 3.5312 1.7812 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5625 1.7812 1.75 1.75-1.75-1.78-1.75zm-3.56 3.56 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5625 3.5625 1.7812 1.75 1.7812-1.75-1.7812-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.7812zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5312 1.75 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5625 3.5312 1.7812 1.7812 1.7812-1.7812-1.7812-1.75zm-3.5312 3.5625 1.7812 1.75 1.75-1.75-1.75-1.7812zm-3.5312 3.5312 1.7812 1.75 1.75-1.75-1.75-1.7812z"/>
+<path id="path3047" stroke-linejoin="round" stroke-width=".625" fill-rule="evenodd" d="m320.4 374.12 15.85-7.3272-7.3272 15.85c-0.66457-4.3673-4.1175-7.7989-8.5229-8.5229z"/>
+</g>
+</g>
+</svg>
