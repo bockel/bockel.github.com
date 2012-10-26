@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+<svg id="svg3105" xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns="http://www.w3.org/2000/svg" height="300" width="500" version="1.1" xmlns:cc="http://creativecommons.org/ns#" xmlns:dc="http://purl.org/dc/elements/1.1/">
+<metadata id="metadata3110">
+<rdf:RDF>
+<cc:Work rdf:about="">
+<dc:format>image/svg+xml</dc:format>
+<dc:type rdf:resource="http://purl.org/dc/dcmitype/StillImage"/>
+<dc:title/>
+</cc:Work>
+</rdf:RDF>
+</metadata>
+<g id="layer1" transform="translate(-186.67 -321.21)">
+<text id="text4116-0" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" transform="scale(.99961 1.0004)" line-height="125%" font-size="40.045px" y="456.21863" x="198.96996" font-family="Overpass" fill="#000000"><tspan id="tspan4118-9" font-weight="bold" font-size="20.023px" y="456.21863" x="198.96996" font-family="Sans">Security</tspan></text>
+<text id="text4116-0-3" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" transform="scale(.99961 1.0004)" line-height="125%" font-size="40.045px" y="487.86859" x="199.80098" font-family="Overpass" fill="#000000"><tspan id="tspan4118-9-4" font-weight="bold" font-size="20.023px" y="487.86859" x="199.80098" font-family="Sans">Compat.</tspan></text>
+<text id="text3905" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" transform="scale(.99961 1.0004)" line-height="125%" font-size="40.045px" y="346.13031" x="355.93353" font-family="Overpass" fill="#000000"><tspan id="tspan3907" font-size="26.697px" y="346.13031" x="355.93353" font-family="Sans">3rd Party Code</tspan></text>
+<text id="text3905-2" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" transform="scale(.99961 1.0004)" line-height="125%" font-size="40.045px" y="606.57654" x="381.89401" font-family="Overpass" fill="#000000"><tspan id="tspan3907-2" font-size="26.697px" y="606.57654" x="381.89401" font-family="Sans">Application</tspan></text>
+<g id="step5" opacity="0">
+<rect id="rect4058-11" height="18.548" width="80.03" y="441.91" x="573.82" fill="#c8c5ac"/>
+<rect id="rect4058-11-0" height="18.548" width="80.03" y="473.44" x="573.82" fill="#c8c5ac"/>
+<path id="rect2985-3-7-3" d="m558.66 505.39 26.678 30.653-26.479 30.426h95.797l27.075-30.625-27.075-30.88z" stroke="#781f1c" fill="#9e292b"/>
+<text id="text3909-1" style="word-spacing:0px;letter-spacing:0px" transform="scale(.99961 1.0004)" xml:space="preserve" line-height="125%" font-size="40.045px" y="545.22693" x="600.62018" font-family="Overpass" fill="#000000"><tspan id="tspan3911-8" font-size="26.697px" y="545.22693" x="600.62018" font-family="Sans">1.0</tspan></text>
+<animate id="anim5" attributeName="opacity" begin="10s;anim5.end+10s" dur="4s" values="1" attributeType="XML"/>
+</g>
+<g id="step4" opacity="0">
+<rect id="rect4058-5-5" height="18.548" width="108.25" y="473.44" x="465.99" fill="#60605b"/>
+<rect id="rect4058-5" height="18.548" width="108.25" y="441.91" x="465.99" fill="#c8c5ac"/>
+<text id="text4116-0-8-3" style="word-spacing:0px;letter-spacing:0px" transform="scale(.99961 1.0004)" xml:space="preserve" line-height="125%" font-size="40.045px" y="489.98526" x="501.51859" font-family="Overpass" fill="#000000"><tspan id="tspan4118-9-9-2" font-size="20.023px" y="489.98526" x="501.51859" font-family="Sans">risk</tspan></text>
+<path id="path4017-8" d="m573.38 357.9v222.04" stroke="#000" stroke-linecap="square" stroke-width="1.5" fill="none"/>
+<path id="rect2985-3-2-2" d="m451.74 367.84 26.678 30.653-26.479 30.426h201.17l27.075-30.625-27.075-30.88z" stroke="#003d6e" fill="#0093d9"/>
+<text id="text3909-01" style="word-spacing:0px;letter-spacing:0px" transform="scale(.99961 1.0004)" xml:space="preserve" line-height="125%" font-size="40.045px" y="407.73279" x="542.6366" font-family="Overpass" fill="#000000"><tspan id="tspan3911-3" font-weight="bold" font-size="26.697px" y="407.73279" x="542.6366" font-family="Sans">2.2</tspan></text>
+<animate id="anim4" attributeName="opacity" begin="8s;anim5.end+8s" end="anim5.end" values="1" attributeType="XML"/>
+</g>
+<g id="step3" opacity="0">
+<rect id="rect4058-7" height="18.548" width="29.906" y="441.91" x="436.51" fill="#c8c5ac"/>
+<rect id="rect4058-7-8" height="18.548" width="29.906" y="473.44" x="436.51" fill="#c8c5ac"/>
+<path id="path4017-66" d="m466.85 357.9v222.04" stroke="#000" stroke-linecap="square" stroke-dasharray="2, 6" stroke-width="2" fill="none"/>
+<path id="rect2985-3-2-4" d="m421.09 505.39 26.678 30.653-26.479 30.426h136.99l27.075-30.625-27.075-30.88z" stroke="#781f1c" fill="#9e292b"/>
+<text id="text3909-09" style="word-spacing:0px;letter-spacing:0px" transform="scale(.99961 1.0004)" xml:space="preserve" line-height="125%" font-size="40.045px" y="545.22693" x="478.34131" font-family="Overpass" fill="#000000"><tspan id="tspan3911-7" font-size="26.697px" y="545.22693" x="478.34131" font-family="Sans">1.0</tspan></text>
+<animate id="anim3" attributeName="opacity" begin="6s;anim5.end+6s" end="anim5.end" values="1" attributeType="XML"/>
+</g>
+<g id="step2" opacity="0">
+<rect id="rect4058-1-7" height="18.548" width="59.391" y="473.44" x="377.96" fill="#60605b"/>
+<rect id="rect4058-1" height="18.548" width="59.391" y="441.91" x="377.96" fill="#c8c5ac"/>
+<text id="text4116-0-8" style="word-spacing:0px;letter-spacing:0px" transform="scale(.99961 1.0004)" xml:space="preserve" line-height="125%" font-size="40.045px" y="489.98526" x="389.01135" font-family="Overpass" fill="#000000"><tspan id="tspan4118-9-9" font-size="20.023px" y="489.98526" x="389.01135" font-family="Sans">risk</tspan></text>
+<path id="path4017-6" d="m437.36 357.9v222.04" stroke="#000" stroke-linecap="square" stroke-width="1.5" fill="none"/>
+<path id="rect2985-3-2" d="m363.17 367.84 26.678 30.653-26.479 30.426h72.446l27.075-30.625-27.075-30.88z" stroke="#003d6e" fill="#0093d9"/>
+<text id="text3909-8" style="word-spacing:0px;letter-spacing:0px" transform="scale(.99961 1.0004)" xml:space="preserve" line-height="125%" font-size="40.045px" y="407.74582" x="394.97305" font-family="Overpass" fill="#000000"><tspan id="tspan3911-0" font-weight="bold" font-size="26.697px" y="407.74582" x="394.97305" font-family="Sans">2.1</tspan></text>
+<animate id="anim4" attributeName="opacity" begin="4s;anim5.end+4s" end="anim5.end" values="1" attributeType="XML"/>
+</g>
+<g id="step1" opacity="0">
+<rect id="rect4058" height="18.548" width="74.976" y="441.91" x="303.4" fill="#c8c5ac"/>
+<text id="text4116" style="word-spacing:0px;letter-spacing:0px" transform="scale(.99961 1.0004)" xml:space="preserve" line-height="125%" font-size="40.045px" y="456.52661" x="319.13382" font-family="Overpass" fill="#000000"><tspan id="tspan4118" font-size="20.023px" y="456.52661" x="319.13382" font-family="Sans">high</tspan></text>
+<rect id="rect4058-9" height="18.548" width="74.976" y="473.44" x="303.4" fill="#c8c5ac"/>
+<text id="text4116-6" style="word-spacing:0px;letter-spacing:0px" transform="scale(.99961 1.0004)" xml:space="preserve" line-height="125%" font-size="40.045px" y="488.04459" x="319.13382" font-family="Overpass" fill="#000000"><tspan id="tspan4118-51" font-size="20.023px" y="488.04459" x="319.13382" font-family="Sans">high</tspan></text>
+<path id="path4017-9" d="m378.09 357.9v222.04" stroke="#000" stroke-linecap="square" stroke-dasharray="2, 6" stroke-width="2" fill="none"/>
+<path id="path4017" d="m303.53 357.9v222.04" stroke="#000" stroke-linecap="square" stroke-dasharray="2, 6" stroke-width="2" fill="none"/>
+<path id="rect2985-3-70" d="m303.53 505.39 0.19847 61.079h116.47l27.075-30.625-27.075-30.88z" stroke="#781f1c" fill="#9e292b"/>
+<text id="text3909-6" style="word-spacing:0px;letter-spacing:0px" transform="scale(.99961 1.0004)" xml:space="preserve" line-height="125%" font-size="40.045px" y="544.77838" x="332.2016" font-family="Overpass" fill="#000000"><tspan id="tspan3911-4" font-weight="bold" font-size="26.697px" y="544.77838" x="332.2016" font-family="Sans">1.0</tspan></text>
+<animate id="anim1" attributeName="opacity" begin="2s;anim5.end+2s" end="anim5.end" values="1" attributeType="XML"/>
+</g>
+<path id="rect2985-3" d="m231.17 367.84 26.678 30.653-26.479 30.426h115.81l27.075-30.625-27.075-30.88z" stroke="#003d6e" fill="#0093d9"/>
+<text id="text3909" style="word-spacing:0px;letter-spacing:0px" xml:space="preserve" transform="scale(.99961 1.0004)" line-height="125%" font-size="40.045px" y="407.74585" x="282.96512" font-family="Overpass" fill="#000000"><tspan id="tspan3911" font-weight="bold" font-size="26.697px" y="407.74585" x="282.96512" font-family="Sans">2.0</tspan></text>
+</g>
+</svg>

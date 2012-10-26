@@ -1,5 +1,108 @@
 <?xml version="1.0" encoding="utf-8"?>
-<feed xmlns="http://www.w3.org/2005/Atom"><title>/share</title><link href="bockel.github.com/" rel="alternate"></link><link href="bockel.github.com/feeds/all.atom.xml" rel="self"></link><id>bockel.github.com/</id><updated>2012-10-23T11:51:00-04:00</updated><entry><title>Security Mentality</title><link href="bockel.github.com/security/security-mentality.html" rel="alternate"></link><updated>2012-10-23T11:51:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-10-23:security/security-mentality.html</id><summary type="html">&lt;p&gt;From the security perspective, we need developers and engineers to
+<feed xmlns="http://www.w3.org/2005/Atom"><title>/share</title><link href="bockel.github.com/" rel="alternate"></link><link href="bockel.github.com/feeds/all.atom.xml" rel="self"></link><id>bockel.github.com/</id><updated>2012-10-26T12:25:00-04:00</updated><entry><title>Third Party Security</title><link href="bockel.github.com/security/third-party-security.html" rel="alternate"></link><updated>2012-10-26T12:25:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-10-26:security/third-party-security.html</id><summary type="html">&lt;p&gt;Many applications rely on externally developed code and libraries to
+support certain functionality. Examples include the integration of
+Apache or other webserver to provide browser-based configuration or the
+use of parsing libraries such as &lt;tt class="docutils literal"&gt;libxml&lt;/tt&gt; or &lt;tt class="docutils literal"&gt;expat&lt;/tt&gt; to efficiently
+handle&amp;nbsp;&lt;span class="caps"&gt;XML&lt;/span&gt;.&lt;/p&gt;
+&lt;p&gt;While use of these third party packages decrease development time and
+produce better products, they do have a drawback &amp;#8212; your application
+inherits the vulnerabilities and weaknesses of the third party&amp;nbsp;code.&lt;/p&gt;
+&lt;p&gt;In general, there are two different ways to integrate third party code
+into an application: &lt;strong&gt;embedded source&lt;/strong&gt; or &lt;strong&gt;linked library&lt;/strong&gt;. Each
+option has its own benefits, shortcomings, and customer&amp;nbsp;impact.&lt;/p&gt;
+&lt;table border="1" class="docutils"&gt;
+&lt;colgroup&gt;
+&lt;col width="34%" /&gt;
+&lt;col width="19%" /&gt;
+&lt;col width="19%" /&gt;
+&lt;col width="28%" /&gt;
+&lt;/colgroup&gt;
+&lt;thead valign="bottom"&gt;
+&lt;tr&gt;&lt;th class="head"&gt;Integration Type&lt;/th&gt;
+&lt;th class="head"&gt;Overhead&lt;/th&gt;
+&lt;th class="head"&gt;Security&lt;/th&gt;
+&lt;th class="head"&gt;Compatibility&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/thead&gt;
+&lt;tbody valign="top"&gt;
+&lt;tr&gt;&lt;td&gt;Embedded Source&lt;/td&gt;
+&lt;td&gt;worse&lt;/td&gt;
+&lt;td&gt;worse&lt;/td&gt;
+&lt;td&gt;better&lt;/td&gt;
+&lt;/tr&gt;
+&lt;tr&gt;&lt;td&gt;Linked Library&lt;/td&gt;
+&lt;td&gt;better&lt;/td&gt;
+&lt;td&gt;better&lt;/td&gt;
+&lt;td&gt;worse&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/tbody&gt;
+&lt;/table&gt;
+&lt;div class="section" id="embedded-source"&gt;
+&lt;h2&gt;Embedded&amp;nbsp;Source&lt;/h2&gt;
+&lt;!-- + flexibility (license dependent)
++ opportunity to apply fixes and test
+- delays increase customer risk
+- more tedious than linking --&gt;
+&lt;p&gt;One option involves the literal copying of the source code or
+application libraries into the application distribution. That is, the
+application and all of its third party dependencies are shipped as a
+single, integrated&amp;nbsp;unit.&lt;/p&gt;
+&lt;p&gt;Embedding the source with the application gives the developers some
+flexibility to modify the existing code to better suit their needs
+(license dependant). By having control over this integration, the
+developers have time to throughly test any patches or other changes
+before publishing&amp;nbsp;updates.&lt;/p&gt;
+&lt;object data="/static/images/third_party_security-embed.anim.svg" type="image/svg+xml"&gt;
+Embedding Third Party Code&lt;/object&gt;
+&lt;p&gt;On the down side, managing embedded code is tedious. Developers are
+responsible for tracking the third party applications for security and
+other fixes that may affect their application. This is compounded by the
+fact that some third party code do not make priority fixes clear, so
+security fixes may be hidden within other functionality&amp;nbsp;updates.&lt;/p&gt;
+&lt;p&gt;Furthermore, once a security fix occurs in a third party library, the
+developers are responsible for applying that fix to their application.
+Until they update the embedded code and publish an updated application,
+all of their customers are at risk and vulnerable to the security&amp;nbsp;issue.&lt;/p&gt;
+&lt;/div&gt;
+&lt;div class="section" id="linked-library"&gt;
+&lt;h2&gt;Linked&amp;nbsp;Library&lt;/h2&gt;
+&lt;!-- + not responsible for external code
++ automatically get patches (when platform is updated)
+- no control
+- updates may be incompatible, break app
+- not user-friendly; dependency hell; requires package management --&gt;
+&lt;p&gt;The other option for integrating third party code or libraries is to
+build the application with links to the dependent libraries. By using
+linked libraries instead of embedding them, the third party code is kept
+external to the application. The linked library model is frequently used
+by &lt;span class="caps"&gt;RHEL&lt;/span&gt; and can be seen in many open source&amp;nbsp;projects.&lt;/p&gt;
+&lt;p&gt;Since the dependencies are external, the responsibility for tracking and
+maintaining that third party code shifts from the developer to the
+platform maintainer. Unlike the embedded model, linking does not require
+developers to push out application updates to handle patches in third
+party&amp;nbsp;code.&lt;/p&gt;
+&lt;object data="/static/images/third_party_security-link.anim.svg" type="image/svg+xml"&gt;
+Linking Against Third Party Code&lt;/object&gt;
+&lt;p&gt;One issue with using linked libraries is that the developers forfeit
+control over the linked dependencies. They have no control over when or
+how the linked libraries may be updated. Making sure that the
+application is linked against the correct versions of the right
+libraries (and all cascading dependencies are properly resolved) is a
+difficult problem that is beyond the capability of most users. Tools
+such as package managers are required to help determine all of the
+dependencies and ensure the right libraries are&amp;nbsp;available.&lt;/p&gt;
+&lt;p&gt;In terms of security, having applications capable of sharing the same
+linked libraries and having the update process managed externally should
+yield improved security. However, in order to take full advantage of
+these updates, an application must not be dependent on a specific
+version of a third party library. By permitting this flexibility, the
+application developers can benefit from updates by are taking a risk
+that a future update to one of these linked libraries could break their
+application. As there are no third party compatibility guarantees, an
+update could change an &lt;span class="caps"&gt;API&lt;/span&gt; or modify the behavior of a utilized feature;
+this would negatively impact the customer and necessitate an application&amp;nbsp;update.&lt;/p&gt;
+&lt;/div&gt;
+</summary><category term="swa"></category></entry><entry><title>Security Mentality</title><link href="bockel.github.com/security/security-mentality.html" rel="alternate"></link><updated>2012-10-23T11:51:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-10-23:security/security-mentality.html</id><summary type="html">&lt;p&gt;From the security perspective, we need developers and engineers to
 &amp;#8220;think more securely&amp;#8221;. However, this is easier said than done. We need
 to first address several important&amp;nbsp;issues:&lt;/p&gt;
 &lt;ol class="arabic simple"&gt;

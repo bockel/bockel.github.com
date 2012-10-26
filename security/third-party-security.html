@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    
+        <link rel="stylesheet" type="text/css" href="/theme/css/style.css">
+    
+    <link href="bockel.github.com/" type="application/atom+xml" rel="alternate" title="/share ATOM Feed" />
+    
+
+    
+    <title>/share/security/third-party-security.html</title>
+        <meta charset="utf-8" />
+    
+    
+<link href="/theme/css/colorbox.css" type="text/css" rel="stylesheet"/>
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.8.2/jquery.min.js" type="text/javascript"></script>
+<script src="/theme/js/jquery.colorbox-min.js" type="text/javascript"></script>
+
+<script src="/theme/js/svg-colorbox.min.js" type="text/javascript"></script>
+
+
+</head>
+<body>
+    <section id="sidebar">
+        <div class="sitename"> <a href="/">/share</a></div>
+        
+
+        <div class="user_meta">
+            <h1 id="user"><a href="/" class="">William Heinbockel</a></h1>
+            <h2>Bringing Security to Open Source</h2>
+            <ul>
+                
+                
+                    
+                
+                
+                    <li><a href="http://securityblog.redhat.com">Red Hat Security</a></li>
+                
+                    <li><a href="http://redhat.com">Red Hat</a></li>
+                
+                    <li><a href="http://github.com/bockel">GitHub</a></li>
+                
+            </ul>
+        </div>
+        <footer>
+            <address>
+                Powered by <a href="http://pelican.notmyidea.org/">Pelican</a>,
+                based on theme by <a href="https://github.com/wting/pelican-svbtle">wting</a>.
+            </address>
+        </footer>
+    </section>
+        
+
+        <section id="content">
+        
+    <article id="blog">
+    
+
+<meta name="title" property="og:title" content="Third Party Security" />
+<!-- <meta name="description" property="og:description" content="" /> -->
+
+<meta name="author" content="William Heinbockel" />
+
+<meta name="revised" content="2012-10-26T12:25:00-05:00" />
+
+
+<header>
+
+    <h1>Third Party&nbsp;Security</h1>
+    <div class="item-list">
+        <div class="item"><label>file:</label>
+            <a class="item-file" href=".././security/third-party-security.html" rel="bookmark"
+                title="Permalink to Third Party Security">security/third-party-security.html</a></div>
+
+        <div class="item"><label>author:</label>William Heinbockel</div>
+
+        <div class="item"><label>published:</label> 2012-10-26T12:25:00-05:00</div>
+
+        <div class="item"><label>updated:</label> 2012-10-26T12:27:58-05:00</div>
+
+    </div>
+
+</header>
+    <p>Many applications rely on externally developed code and libraries to
+support certain functionality. Examples include the integration of
+Apache or other webserver to provide browser-based configuration or the
+use of parsing libraries such as <tt class="docutils literal">libxml</tt> or <tt class="docutils literal">expat</tt> to efficiently
+handle&nbsp;<span class="caps">XML</span>.</p>
+<p>While use of these third party packages decrease development time and
+produce better products, they do have a drawback &#8212; your application
+inherits the vulnerabilities and weaknesses of the third party&nbsp;code.</p>
+<p>In general, there are two different ways to integrate third party code
+into an application: <strong>embedded source</strong> or <strong>linked library</strong>. Each
+option has its own benefits, shortcomings, and customer&nbsp;impact.</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="34%" />
+<col width="19%" />
+<col width="19%" />
+<col width="28%" />
+</colgroup>
+<thead valign="bottom">
+<tr><th class="head">Integration Type</th>
+<th class="head">Overhead</th>
+<th class="head">Security</th>
+<th class="head">Compatibility</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr><td>Embedded Source</td>
+<td>worse</td>
+<td>worse</td>
+<td>better</td>
+</tr>
+<tr><td>Linked Library</td>
+<td>better</td>
+<td>better</td>
+<td>worse</td>
+</tr>
+</tbody>
+</table>
+<div class="section" id="embedded-source">
+<h2>Embedded&nbsp;Source</h2>
+<!-- + flexibility (license dependent)
++ opportunity to apply fixes and test
+- delays increase customer risk
+- more tedious than linking -->
+<p>One option involves the literal copying of the source code or
+application libraries into the application distribution. That is, the
+application and all of its third party dependencies are shipped as a
+single, integrated&nbsp;unit.</p>
+<p>Embedding the source with the application gives the developers some
+flexibility to modify the existing code to better suit their needs
+(license dependant). By having control over this integration, the
+developers have time to throughly test any patches or other changes
+before publishing&nbsp;updates.</p>
+<object data="/static/images/third_party_security-embed.anim.svg" type="image/svg+xml">
+Embedding Third Party Code</object>
+<p>On the down side, managing embedded code is tedious. Developers are
+responsible for tracking the third party applications for security and
+other fixes that may affect their application. This is compounded by the
+fact that some third party code do not make priority fixes clear, so
+security fixes may be hidden within other functionality&nbsp;updates.</p>
+<p>Furthermore, once a security fix occurs in a third party library, the
+developers are responsible for applying that fix to their application.
+Until they update the embedded code and publish an updated application,
+all of their customers are at risk and vulnerable to the security&nbsp;issue.</p>
+</div>
+<div class="section" id="linked-library">
+<h2>Linked&nbsp;Library</h2>
+<!-- + not responsible for external code
++ automatically get patches (when platform is updated)
+- no control
+- updates may be incompatible, break app
+- not user-friendly; dependency hell; requires package management -->
+<p>The other option for integrating third party code or libraries is to
+build the application with links to the dependent libraries. By using
+linked libraries instead of embedding them, the third party code is kept
+external to the application. The linked library model is frequently used
+by <span class="caps">RHEL</span> and can be seen in many open source&nbsp;projects.</p>
+<p>Since the dependencies are external, the responsibility for tracking and
+maintaining that third party code shifts from the developer to the
+platform maintainer. Unlike the embedded model, linking does not require
+developers to push out application updates to handle patches in third
+party&nbsp;code.</p>
+<object data="/static/images/third_party_security-link.anim.svg" type="image/svg+xml">
+Linking Against Third Party Code</object>
+<p>One issue with using linked libraries is that the developers forfeit
+control over the linked dependencies. They have no control over when or
+how the linked libraries may be updated. Making sure that the
+application is linked against the correct versions of the right
+libraries (and all cascading dependencies are properly resolved) is a
+difficult problem that is beyond the capability of most users. Tools
+such as package managers are required to help determine all of the
+dependencies and ensure the right libraries are&nbsp;available.</p>
+<p>In terms of security, having applications capable of sharing the same
+linked libraries and having the update process managed externally should
+yield improved security. However, in order to take full advantage of
+these updates, an application must not be dependent on a specific
+version of a third party library. By permitting this flexibility, the
+application developers can benefit from updates by are taking a risk
+that a future update to one of these linked libraries could break their
+application. As there are no third party compatibility guarantees, an
+update could change an <span class="caps">API</span> or modify the behavior of a utilized feature;
+this would negatively impact the customer and necessitate an application&nbsp;update.</p>
+</div>
+
+
+    <footer>
+    <div id="article_meta">
+        
+            Category:
+            <a href=".././security/">/share/security</a>
+        
+        
+            <br />Tags:
+            
+                <a href=".././tag/swa.html">swa</a>
+            
+        
+    </div>
+
+    
+    </footer>
+    </article>
+    
+    <div id="comments">
+        <h3>Discussion</h3>
+        <div id="disqus_thread"></div>
+        <script type="text/javascript">
+            var disqus_identifier = "security/third-party-security.html";
+            (function() {
+                var dsq = document.createElement('script'); dsq.type = 'text/javascript'; dsq.async = true;
+                dsq.src = 'http://usr-share.disqus.com/embed.js';
+                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(dsq);
+            })();
+        </script>
+        <noscript>Please enable JavaScript to view <a href="http://disqus.com/?ref_noscript">comments</a>.</noscript>
+    </div>
+    
+
+
+        <div class="footer">
+            <div id="copyright">
+                <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US"><img alt="Creative Commons License" style="border-width:0" src="/theme/img/cc88x31.png" /></a><br />Except where otherise noted, content on this site is licensed under a <a rel="license" href="http://creativecommons.org/licenses/by/3.0/deed.en_US">Creative Commons Attribution 3.0 Unported License</a></div>
+            <p id="disclosure">All information contained within this blog is my
+            own opinion and is not intended to constitute advice or technical
+            support. The content is not represented of, or affliated with my
+            current or previous employers.</p>
+        </div>
+        </section>
+
+
+    
+<script type="text/javascript">
+	var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
+	document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
+	</script>
+	<script type="text/javascript">
+		try {
+			var pageTracker = _gat._getTracker("UA-34392261-1");
+			pageTracker._trackPageview();
+		} catch(err) {}</script>
+
+</body>
+</html>
