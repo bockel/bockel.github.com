@@ -76,7 +76,7 @@
 
         <div class="item"><label>published:</label> 2012-10-26T12:25:00-05:00</div>
 
-        <div class="item"><label>updated:</label> 2012-10-26T12:27:58-05:00</div>
+        <div class="item"><label>updated:</label> 2012-11-02T09:30:26-05:00</div>
 
     </div>
 
@@ -94,16 +94,16 @@ into an application: <strong>embedded source</strong> or <strong>linked library<
 option has its own benefits, shortcomings, and customer&nbsp;impact.</p>
 <table border="1" class="docutils">
 <colgroup>
-<col width="34%" />
-<col width="19%" />
-<col width="19%" />
-<col width="28%" />
+<col width="37%" />
+<col width="20%" />
+<col width="20%" />
+<col width="22%" />
 </colgroup>
 <thead valign="bottom">
 <tr><th class="head">Integration Type</th>
 <th class="head">Overhead</th>
 <th class="head">Security</th>
-<th class="head">Compatibility</th>
+<th class="head">Stability</th>
 </tr>
 </thead>
 <tbody valign="top">
@@ -119,6 +119,8 @@ option has its own benefits, shortcomings, and customer&nbsp;impact.</p>
 </tr>
 </tbody>
 </table>
+<p>It really comes down to a choice between <em>security</em> versus <em>stability</em>.
+In order to keep an application functional, many vendors prioritize&nbsp;stability.</p>
 <div class="section" id="embedded-source">
 <h2>Embedded&nbsp;Source</h2>
 <!-- + flexibility (license dependent)
@@ -179,10 +181,11 @@ yield improved security. However, in order to take full advantage of
 these updates, an application must not be dependent on a specific
 version of a third party library. By permitting this flexibility, the
 application developers can benefit from updates by are taking a risk
-that a future update to one of these linked libraries could break their
-application. As there are no third party compatibility guarantees, an
-update could change an <span class="caps">API</span> or modify the behavior of a utilized feature;
-this would negatively impact the customer and necessitate an application&nbsp;update.</p>
+that a future update to one of these linked libraries could break the
+stability of their application. As there are no third party
+compatibility guarantees, an update could change an <span class="caps">API</span> or modify the
+behavior of a utilized feature; this would negatively impact the
+customer necessitating an application&nbsp;update.</p>
 </div>
 
 

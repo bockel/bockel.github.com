@@ -12,16 +12,16 @@ into an application: &lt;strong&gt;embedded source&lt;/strong&gt; or &lt;strong&
 option has its own benefits, shortcomings, and customer&amp;nbsp;impact.&lt;/p&gt;
 &lt;table border="1" class="docutils"&gt;
 &lt;colgroup&gt;
-&lt;col width="34%" /&gt;
-&lt;col width="19%" /&gt;
-&lt;col width="19%" /&gt;
-&lt;col width="28%" /&gt;
+&lt;col width="37%" /&gt;
+&lt;col width="20%" /&gt;
+&lt;col width="20%" /&gt;
+&lt;col width="22%" /&gt;
 &lt;/colgroup&gt;
 &lt;thead valign="bottom"&gt;
 &lt;tr&gt;&lt;th class="head"&gt;Integration Type&lt;/th&gt;
 &lt;th class="head"&gt;Overhead&lt;/th&gt;
 &lt;th class="head"&gt;Security&lt;/th&gt;
-&lt;th class="head"&gt;Compatibility&lt;/th&gt;
+&lt;th class="head"&gt;Stability&lt;/th&gt;
 &lt;/tr&gt;
 &lt;/thead&gt;
 &lt;tbody valign="top"&gt;
@@ -37,6 +37,8 @@ option has its own benefits, shortcomings, and customer&amp;nbsp;impact.&lt;/p&g
 &lt;/tr&gt;
 &lt;/tbody&gt;
 &lt;/table&gt;
+&lt;p&gt;It really comes down to a choice between &lt;em&gt;security&lt;/em&gt; versus &lt;em&gt;stability&lt;/em&gt;.
+In order to keep an application functional, many vendors prioritize&amp;nbsp;stability.&lt;/p&gt;
 &lt;div class="section" id="embedded-source"&gt;
 &lt;h2&gt;Embedded&amp;nbsp;Source&lt;/h2&gt;
 &lt;!-- + flexibility (license dependent)
@@ -97,10 +99,11 @@ yield improved security. However, in order to take full advantage of
 these updates, an application must not be dependent on a specific
 version of a third party library. By permitting this flexibility, the
 application developers can benefit from updates by are taking a risk
-that a future update to one of these linked libraries could break their
-application. As there are no third party compatibility guarantees, an
-update could change an &lt;span class="caps"&gt;API&lt;/span&gt; or modify the behavior of a utilized feature;
-this would negatively impact the customer and necessitate an application&amp;nbsp;update.&lt;/p&gt;
+that a future update to one of these linked libraries could break the
+stability of their application. As there are no third party
+compatibility guarantees, an update could change an &lt;span class="caps"&gt;API&lt;/span&gt; or modify the
+behavior of a utilized feature; this would negatively impact the
+customer necessitating an application&amp;nbsp;update.&lt;/p&gt;
 &lt;/div&gt;
 </summary><category term="swa"></category></entry><entry><title>Security Mentality</title><link href="bockel.github.com/security/security-mentality.html" rel="alternate"></link><updated>2012-10-23T11:51:00-04:00</updated><author><name>William Heinbockel</name></author><id>tag:bockel.github.com,2012-10-23:security/security-mentality.html</id><summary type="html">&lt;p&gt;From the security perspective, we need developers and engineers to
 &amp;#8220;think more securely&amp;#8221;. However, this is easier said than done. We need
